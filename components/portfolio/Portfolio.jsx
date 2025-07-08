@@ -14,11 +14,11 @@ const projectsData = [
   {
     title: "Distributed Rate Limiter",
     image: "/rate-limiter.png",
-    subtitle: "High-Performance Traffic Control System",
+    subtitle: "Enterprise-Grade Traffic Control Architecture",
     description:
-      "Architected an enterprise-grade distributed rate limiting solution using Go and Redis, achieving 99.99% uptime under heavy production loads.",
+      "Architected a high-performance distributed rate limiting solution using Go and Redis, achieving 99.99% uptime under heavy production loads with atomic request control.",
     details: [
-      "Engineered a sophisticated token bucket algorithm with Redis-backed distributed state management for seamless horizontal scaling",
+      "Engineered sophisticated token bucket algorithm with Redis-backed distributed state management for seamless horizontal scaling",
       "Implemented atomic Lua scripting for race-condition-free token operations, ensuring precise rate enforcement across concurrent requests",
       "Containerized with Docker and orchestrated through NGINX for intelligent load balancing and auto-scaling capabilities",
       "Deployed advanced cleanup routines and health monitoring to maintain optimal performance with zero downtime",
@@ -28,11 +28,11 @@ const projectsData = [
   {
     title: "Distributed Cache Decorator",
     image: "/dis-chache.png",
-    subtitle: "Intelligent Caching Infrastructure",
+    subtitle: "High-Performance Caching Infrastructure",
     description:
-      "Developed a revolutionary Python decorator library that transforms microservice performance through intelligent distributed caching.",
+      "Developed a production-ready Python decorator library that transforms microservice performance through intelligent distributed caching with fault-tolerant mechanisms.",
     details: [
-      "Created a plug-and-play caching solution with zero-configuration setup, boosting application performance by over 40%",
+      "Created plug-and-play caching solution with zero-configuration setup, boosting application performance by over 60%",
       "Pioneered code-aware cache invalidation technology that automatically handles logic changes and deployment cycles",
       "Implemented sophisticated Redis hash-based keying with singleton client architecture for maximum fault tolerance",
       "Designed intelligent fallback mechanisms and cache warming strategies for enterprise-level reliability",
@@ -40,18 +40,18 @@ const projectsData = [
     tags: ["Python", "Redis", "Microservices", "Performance", "Architecture"],
   },
   {
-    title: "ClipSync Pro",
+    title: "Real-Time Sync Backend",
     image: "/clipsync.jpeg",
-    subtitle: "Real-Time Cross-Platform Clipboard Sync",
+    subtitle: "Multi-Device Synchronization Platform",
     description:
-      "Built a cutting-edge real-time clipboard synchronization platform enabling seamless content sharing across all devices.",
+      "Built a cutting-edge real-time synchronization platform enabling seamless content sharing across multiple devices with sub-second latency.",
     details: [
-      "Developed a lightning-fast Go backend with WebSocket architecture delivering sub-second clipboard synchronization",
-      "Implemented Redis Pub/Sub messaging system for instant, reliable content broadcasting across multiple devices",
+      "Developed lightning-fast Go backend with WebSocket architecture delivering sub-second synchronization across 6+ devices",
+      "Implemented Redis Pub/Sub messaging system for instant, reliable content broadcasting with zero message loss",
       "Engineered secure JWT-based authentication with advanced OTP password recovery and session management",
       "Designed extensible cross-platform architecture supporting Windows, macOS, and mobile devices with future-ready APIs",
     ],
-    tags: ["Go", "WebSockets", "Redis", "JWT", "Cross-Platform"],
+    tags: ["Go", "WebSockets", "Redis", "JWT", "Distributed Systems"],
   },
 ];
 
@@ -59,25 +59,25 @@ const experienceData = [
   {
     company: "Inner Joy Ed",
     image: "/innnerjoyed.jpeg",
-    role: "Full-Stack AI Engineer",
+    role: "Full-Stack Software Engineer",
     period: "May 2024 - Present",
     description:
-      "Spearheaded the development of next-generation AI-powered educational tools, revolutionizing personalized learning experiences.",
+      "Spearheaded the development of scalable educational platforms, focusing on high-performance backend systems and responsive frontend architectures.",
     details: [
-      "Architected an intelligent curriculum platform integrating LangChain, GPT-4, and FAISS vector databases for personalized learning pathways",
+      "Architected modular curriculum platform with advanced caching and optimization strategies for personalized learning pathways",
       "Engineered responsive, modular UI components using Next.js and Tailwind CSS, accelerating feature deployment by 30%",
       "Built high-performance NestJS APIs with PostgreSQL optimization, ensuring seamless performance under concurrent user loads",
-      "Integrated advanced PDF generation and Canva editing workflows with cloud-native file storage solutions",
+      "Integrated advanced PDF generation and content editing workflows with cloud-native file storage solutions",
     ],
-    tags: ["AI/ML", "Next.js", "NestJS", "PostgreSQL", "GPT-4"],
+    tags: ["Next.js", "NestJS", "PostgreSQL", "Microservices", "Cloud"],
   },
   {
     company: "One Community Inc.",
     image: "/one community.jpeg",
-    role: "Backend Engineer",
+    role: "Backend Systems Engineer",
     period: "May 2024 - August 2024",
     description:
-      "Transformed backend architecture for a global community platform, enhancing scalability and performance for thousands of users.",
+      "Transformed backend architecture for a global community platform, enhancing scalability and performance through advanced system design patterns.",
     details: [
       "Architected comprehensive Django backend refactoring, dramatically improving system modularity, scalability, and maintainability",
       "Designed robust REST API ecosystem for task management, advanced reporting, and administrative operations",
@@ -92,14 +92,20 @@ const experienceData = [
     role: "Computer Science Instructor",
     period: "August 2023 - June 2024",
     description:
-      "Elevated computer science education through innovative teaching methodologies and mentorship, inspiring the next generation of developers.",
+      "Elevated computer science education through advanced systems programming and software engineering methodologies, mentoring the next generation of engineers.",
     details: [
       "Delivered comprehensive C++ curriculum covering advanced data structures, algorithms, and system design to 50+ students per semester",
-      "Developed innovative real-world programming examples and assessments that significantly enhanced student comprehension and engagement",
-      "Mentored students in software engineering best practices, including OOP principles, design patterns, and clean code methodologies",
+      "Developed innovative real-world programming examples focusing on memory optimization and system-level programming",
+      "Mentored students in software engineering best practices, including design patterns, clean architecture, and distributed systems concepts",
       "Achieved exceptional 15% improvement in class performance metrics with consistently high 90%+ student satisfaction ratings",
     ],
-    tags: ["C++", "Data Structures", "Algorithms", "Teaching", "Mentorship"],
+    tags: [
+      "C++",
+      "Systems Programming",
+      "Architecture",
+      "Teaching",
+      "Mentorship",
+    ],
   },
   {
     company: "Tata Consultancy Services",
@@ -107,55 +113,65 @@ const experienceData = [
     role: "Software Engineer",
     period: "March 2022 - June 2022",
     description:
-      "Delivered mission-critical automation solutions for automotive diagnostics, streamlining complex data processing workflows.",
+      "Delivered mission-critical automation solutions for automotive diagnostics, streamlining complex data processing workflows with enterprise-grade tooling.",
     details: [
-      "Engineered a sophisticated Python CLI tool for parsing complex AUTOSAR XML specifications into structured JSON/CSV formats",
-      "Achieved remarkable 40% reduction in diagnostics processing time through optimized XML handling using lxml and ElementTree",
+      "Engineered sophisticated Python CLI tool for parsing complex AUTOSAR XML specifications into structured formats",
+      "Achieved remarkable 40% reduction in diagnostics processing time through optimized XML handling and data transformation",
       "Delivered production-ready tooling that became the team standard for field troubleshooting and diagnostic analysis",
       "Collaborated effectively using GitLab and Agile methodologies, consistently delivering sprint objectives ahead of schedule",
     ],
-    tags: ["Python", "XML Processing", "CLI Tools", "Agile", "Automation"],
+    tags: [
+      "Python",
+      "XML Processing",
+      "CLI Tools",
+      "Agile",
+      "Enterprise Systems",
+    ],
   },
 ];
 
 export default function Portfolio() {
   return (
-    <div className="bg-gradient-to-br from-slate-50 via-blue-50 to-violet-50 text-slate-800 font-sans min-h-screen">
-      <nav className="flex justify-between items-center px-8 py-6 backdrop-blur-md bg-white/80 border-b border-white/20 sticky top-0 z-50 shadow-lg">
-        <div className="text-3xl font-bold bg-gradient-to-r from-emerald-600 via-blue-600 to-violet-600 bg-clip-text text-transparent tracking-wide">
+    <div className="bg-gradient-to-br from-slate-900 via-gray-900 to-black text-white font-sans min-h-screen">
+      <nav className="flex justify-between items-center px-8 py-6 backdrop-blur-md bg-black/40 border-b border-amber-500/20 sticky top-0 z-50 shadow-2xl">
+        <div className="text-3xl font-bold bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-600 bg-clip-text text-transparent tracking-wide">
           Pranay Guda
         </div>
         <ul className="flex space-x-8 text-base font-medium">
           <li>
             <a
               href="#about"
-              className="hover:text-emerald-600 transition-all duration-300 hover:scale-105"
+              className="hover:text-amber-400 transition-all duration-300 hover:scale-105 relative group"
             >
               About
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-amber-400 to-yellow-500 group-hover:w-full transition-all duration-300"></span>
             </a>
           </li>
           <li>
             <a
               href="#projects"
-              className="hover:text-blue-600 transition-all duration-300 hover:scale-105"
+              className="hover:text-yellow-400 transition-all duration-300 hover:scale-105 relative group"
             >
               Projects
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-yellow-400 to-amber-500 group-hover:w-full transition-all duration-300"></span>
             </a>
           </li>
           <li>
             <a
               href="#experience"
-              className="hover:text-violet-600 transition-all duration-300 hover:scale-105"
+              className="hover:text-amber-300 transition-all duration-300 hover:scale-105 relative group"
             >
               Experience
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-amber-300 to-yellow-400 group-hover:w-full transition-all duration-300"></span>
             </a>
           </li>
           <li>
             <a
               href="#contact"
-              className="hover:text-indigo-600 transition-all duration-300 hover:scale-105"
+              className="hover:text-yellow-300 transition-all duration-300 hover:scale-105 relative group"
             >
               Contact
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-yellow-300 to-amber-400 group-hover:w-full transition-all duration-300"></span>
             </a>
           </li>
         </ul>
@@ -165,60 +181,61 @@ export default function Portfolio() {
         id="about"
         className="flex flex-col items-center py-20 px-4 md:px-12 text-center relative overflow-hidden"
       >
-        <div className="absolute inset-0 bg-gradient-to-br from-emerald-100/30 via-blue-100/30 to-violet-100/30 rounded-3xl transform rotate-1 scale-110"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-amber-900/20 via-yellow-900/10 to-amber-800/20 rounded-3xl transform rotate-1 scale-110"></div>
         <div className="relative z-10">
           <div className="relative mb-8">
-            <div className="absolute inset-0 bg-gradient-to-r from-emerald-400 via-blue-400 to-violet-400 rounded-full blur-lg opacity-30 animate-pulse"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 rounded-full blur-lg opacity-30 animate-pulse"></div>
             <Image
               src="/1500.jpg"
               alt="Pranay Guda"
               width={160}
               height={160}
-              className="relative rounded-full w-40 h-40 border-4 border-white/50 shadow-2xl"
+              className="relative rounded-full w-40 h-40 border-4 border-amber-400/50 shadow-2xl"
             />
           </div>
-          <h1 className="text-5xl font-bold mb-6 bg-gradient-to-r from-emerald-700 via-blue-700 to-violet-700 bg-clip-text text-transparent">
-            Creative Technologist & AI Engineer
+          <h1 className="text-5xl font-bold mb-6 bg-gradient-to-r from-amber-300 via-yellow-300 to-amber-400 bg-clip-text text-transparent">
+            Full-Stack Developer
           </h1>
-          <p className="text-xl max-w-4xl text-slate-600 leading-relaxed font-light">
+          <p className="text-xl max-w-4xl text-gray-300 leading-relaxed font-light">
             Passionate{" "}
-            <span className="font-semibold text-emerald-600">
-              Full-Stack Engineer
+            <span className="font-semibold text-amber-400">
+              Software Engineer
             </span>{" "}
-            crafting next-generation solutions at the intersection of
-            <span className="font-semibold text-blue-600">
+            with strong interests in
+            <span className="font-semibold text-yellow-400">
               {" "}
-              artificial intelligence
-            </span>
-            ,{" "}
-            <span className="font-semibold text-violet-600">
               distributed systems
             </span>
-            , and
-            <span className="font-semibold text-indigo-600">
-              user experience
+            ,{" "}
+            <span className="font-semibold text-amber-300">
+              high-performance architectures
             </span>
-            . Transforming complex challenges into elegant, scalable
-            technologies that shape the future.
+            , and
+            <span className="font-semibold text-yellow-300">
+              {" "}
+              scalable backend solutions
+            </span>
+            . Building robust, production-ready applications that solve
+            real-world problems with clean code and thoughtful engineering.
           </p>
         </div>
       </section>
 
       <section id="projects" className="py-20 px-4 md:px-12 relative">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-emerald-600 via-blue-600 to-violet-600 bg-clip-text text-transparent">
-            Featured Projects
+          <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 bg-clip-text text-transparent">
+            Engineering Excellence
           </h2>
-          <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-            Innovative solutions showcasing advanced engineering and creative
-            problem-solving
+          <p className="text-lg text-gray-300 max-w-2xl mx-auto">
+            Cutting-edge distributed systems and high-performance architectures
+            showcasing advanced engineering expertise
           </p>
         </div>
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto">
           {projectsData.map((project) => (
             <Dialog key={project.title}>
               <DialogTrigger asChild>
-                <Card className="group cursor-pointer h-full bg-gradient-to-br from-white via-emerald-50/20 to-blue-50/20 border-0 shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-[1.03] rounded-2xl overflow-hidden backdrop-blur-sm">
+                <Card className="group cursor-pointer h-full bg-gradient-to-br from-gray-900 via-gray-800 to-black border border-amber-500/20 shadow-2xl hover:shadow-amber-500/20 hover:shadow-3xl transition-all duration-500 hover:scale-[1.03] rounded-2xl overflow-hidden backdrop-blur-sm hover:border-amber-400/40">
                   <div className="relative overflow-hidden rounded-t-2xl">
                     <Image
                       src={project.image}
@@ -227,32 +244,32 @@ export default function Portfolio() {
                       height={250}
                       className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   </div>
                   <CardContent className="p-6">
                     <div className="flex flex-wrap gap-2 mb-3">
                       {project.tags.slice(0, 3).map((tag) => (
                         <span
                           key={tag}
-                          className="px-2 py-1 text-xs font-medium bg-gradient-to-r from-emerald-100 to-blue-100 text-emerald-700 rounded-full"
+                          className="px-2 py-1 text-xs font-medium bg-gradient-to-r from-amber-900/50 to-yellow-900/50 text-amber-300 rounded-full border border-amber-500/30"
                         >
                           {tag}
                         </span>
                       ))}
                     </div>
-                    <h3 className="text-xl font-bold mb-2 text-slate-800 group-hover:text-blue-600 transition-colors">
+                    <h3 className="text-xl font-bold mb-2 text-white group-hover:text-amber-400 transition-colors">
                       {project.title}
                     </h3>
-                    <p className="text-sm font-medium text-blue-600 mb-3">
+                    <p className="text-sm font-medium text-amber-400 mb-3">
                       {project.subtitle}
                     </p>
-                    <p className="text-slate-600 text-sm leading-relaxed">
+                    <p className="text-gray-300 text-sm leading-relaxed">
                       {project.description}
                     </p>
                   </CardContent>
                 </Card>
               </DialogTrigger>
-              <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">
+              <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto bg-gray-900 border border-amber-500/30">
                 <div className="space-y-4">
                   <Image
                     src={project.image}
@@ -261,22 +278,22 @@ export default function Portfolio() {
                     height={300}
                     className="w-full h-48 object-cover rounded-lg"
                   />
-                  <DialogTitle className="text-2xl font-bold text-slate-800">
+                  <DialogTitle className="text-2xl font-bold text-white">
                     {project.title}
                   </DialogTitle>
-                  <p className="text-blue-600 font-medium">
+                  <p className="text-amber-400 font-medium">
                     {project.subtitle}
                   </p>
-                  <p className="text-slate-600">{project.description}</p>
+                  <p className="text-gray-300">{project.description}</p>
                   <div className="space-y-3">
-                    <h4 className="font-semibold text-slate-800">
-                      Key Achievements:
+                    <h4 className="font-semibold text-white">
+                      Technical Achievements:
                     </h4>
                     <ul className="space-y-2">
                       {project.details.map((detail, idx) => (
                         <li key={idx} className="flex items-start gap-3">
-                          <div className="w-2 h-2 bg-gradient-to-r from-emerald-500 to-blue-500 rounded-full mt-2 flex-shrink-0"></div>
-                          <span className="text-sm text-slate-600">
+                          <div className="w-2 h-2 bg-gradient-to-r from-amber-500 to-yellow-500 rounded-full mt-2 flex-shrink-0"></div>
+                          <span className="text-sm text-gray-300">
                             {detail}
                           </span>
                         </li>
@@ -287,7 +304,7 @@ export default function Portfolio() {
                     {project.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="px-3 py-1 text-xs font-medium bg-gradient-to-r from-emerald-100 to-blue-100 text-emerald-700 rounded-full"
+                        className="px-3 py-1 text-xs font-medium bg-gradient-to-r from-amber-900/50 to-yellow-900/50 text-amber-300 rounded-full border border-amber-500/30"
                       >
                         {tag}
                       </span>
@@ -302,92 +319,101 @@ export default function Portfolio() {
 
       <section
         id="experience"
-        className="py-20 px-4 md:px-12 bg-gradient-to-br from-violet-50/50 via-blue-50/30 to-emerald-50/50 relative"
+        className="py-20 px-4 md:px-12 bg-gradient-to-br from-gray-900/50 via-black/30 to-gray-800/50 relative"
       >
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_40%,rgba(120,119,198,0.1),transparent)] pointer-events-none"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_40%,rgba(245,158,11,0.1),transparent)] pointer-events-none"></div>
         <div className="relative z-10">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-violet-600 via-blue-600 to-emerald-600 bg-clip-text text-transparent">
+            <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-yellow-400 via-amber-400 to-yellow-500 bg-clip-text text-transparent">
               Professional Journey
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-              Transforming ideas into impactful solutions across diverse
-              industries and technologies
+            <p className="text-lg text-gray-300 max-w-2xl mx-auto">
+              Engineering excellence across diverse platforms and technologies,
+              building scalable systems that power modern applications
             </p>
           </div>
           <div className="grid gap-8 md:grid-cols-2 max-w-6xl mx-auto">
             {experienceData.map((exp) => (
               <Dialog key={exp.company}>
                 <DialogTrigger asChild>
-                  <Card className="group cursor-pointer h-full bg-gradient-to-br from-white via-violet-50/20 to-blue-50/20 border-0 shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-[1.02] rounded-2xl overflow-hidden backdrop-blur-sm">
-                    <div className="relative overflow-hidden rounded-t-2xl">
-                      <Image
-                        src={exp.image}
-                        alt={exp.company}
-                        width={400}
-                        height={200}
-                        className="w-full h-36 object-cover group-hover:scale-110 transition-transform duration-500"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                      <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-medium text-slate-700">
-                        {exp.period}
-                      </div>
-                    </div>
+                  <Card className="group cursor-pointer h-full bg-gradient-to-br from-gray-900 via-gray-800 to-black border border-yellow-500/20 shadow-2xl hover:shadow-yellow-500/20 hover:shadow-3xl transition-all duration-500 hover:scale-[1.02] rounded-2xl overflow-hidden backdrop-blur-sm hover:border-yellow-400/40">
                     <CardContent className="p-6">
+                      <div className="flex gap-4 mb-4">
+                        <div className="flex-shrink-0">
+                          <Image
+                            src={exp.image}
+                            alt={exp.company}
+                            width={80}
+                            height={80}
+                            className="w-20 h-20 object-contain rounded-lg bg-white/10 p-2"
+                          />
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <div className="flex justify-between items-start mb-2">
+                            <h3 className="text-xl font-bold text-white group-hover:text-yellow-400 transition-colors">
+                              {exp.company}
+                            </h3>
+                            <span className="bg-black/80 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-medium text-amber-300 border border-amber-500/30 flex-shrink-0 ml-2">
+                              {exp.period}
+                            </span>
+                          </div>
+                          <p className="text-sm font-semibold text-yellow-400 mb-3">
+                            {exp.role}
+                          </p>
+                        </div>
+                      </div>
                       <div className="flex flex-wrap gap-2 mb-3">
                         {exp.tags.slice(0, 3).map((tag) => (
                           <span
                             key={tag}
-                            className="px-2 py-1 text-xs font-medium bg-gradient-to-r from-violet-100 to-blue-100 text-violet-700 rounded-full"
+                            className="px-2 py-1 text-xs font-medium bg-gradient-to-r from-yellow-900/50 to-amber-900/50 text-yellow-300 rounded-full border border-yellow-500/30"
                           >
                             {tag}
                           </span>
                         ))}
                       </div>
-                      <h3 className="text-xl font-bold mb-1 text-slate-800 group-hover:text-violet-600 transition-colors">
-                        {exp.company}
-                      </h3>
-                      <p className="text-sm font-semibold text-violet-600 mb-3">
-                        {exp.role}
-                      </p>
-                      <p className="text-slate-600 text-sm leading-relaxed">
+                      <p className="text-gray-300 text-sm leading-relaxed">
                         {exp.description}
                       </p>
                     </CardContent>
                   </Card>
                 </DialogTrigger>
-                <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">
+                <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto bg-gray-900 border border-yellow-500/30">
                   <div className="space-y-4">
-                    <Image
-                      src={exp.image}
-                      alt={exp.company}
-                      width={600}
-                      height={300}
-                      className="w-full h-48 object-cover rounded-lg"
-                    />
-                    <div className="flex justify-between items-start">
-                      <div>
-                        <DialogTitle className="text-2xl font-bold text-slate-800">
-                          {exp.company}
-                        </DialogTitle>
-                        <p className="text-violet-600 font-semibold">
+                    <div className="flex gap-4 items-start">
+                      <div className="flex-shrink-0">
+                        <Image
+                          src={exp.image}
+                          alt={exp.company}
+                          width={80}
+                          height={80}
+                          className="w-20 h-20 object-contain rounded-lg bg-white/10 p-2"
+                        />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <div className="flex justify-between items-start mb-2">
+                          <DialogTitle className="text-2xl font-bold text-white">
+                            {exp.company}
+                          </DialogTitle>
+                          <span className="bg-gradient-to-r from-yellow-900/50 to-amber-900/50 text-yellow-300 px-3 py-1 rounded-full text-sm font-medium border border-yellow-500/30 flex-shrink-0 ml-2">
+                            {exp.period}
+                          </span>
+                        </div>
+                        <p className="text-yellow-400 font-semibold">
                           {exp.role}
                         </p>
                       </div>
-                      <span className="bg-gradient-to-r from-violet-100 to-blue-100 text-violet-700 px-3 py-1 rounded-full text-sm font-medium">
-                        {exp.period}
-                      </span>
                     </div>
-                    <p className="text-slate-600">{exp.description}</p>
+                    <p className="text-gray-300">{exp.description}</p>
                     <div className="space-y-3">
-                      <h4 className="font-semibold text-slate-800">
-                        Key Accomplishments:
+                      <h4 className="font-semibold text-white">
+                        Key Engineering Accomplishments:
                       </h4>
                       <ul className="space-y-2">
                         {exp.details.map((detail, idx) => (
                           <li key={idx} className="flex items-start gap-3">
-                            <div className="w-2 h-2 bg-gradient-to-r from-violet-500 to-blue-500 rounded-full mt-2 flex-shrink-0"></div>
-                            <span className="text-sm text-slate-600">
+                            <div className="w-2 h-2 bg-gradient-to-r from-yellow-500 to-amber-500 rounded-full mt-2 flex-shrink-0"></div>
+                            <span className="text-sm text-gray-300">
                               {detail}
                             </span>
                           </li>
@@ -398,7 +424,7 @@ export default function Portfolio() {
                       {exp.tags.map((tag) => (
                         <span
                           key={tag}
-                          className="px-3 py-1 text-xs font-medium bg-gradient-to-r from-violet-100 to-blue-100 text-violet-700 rounded-full"
+                          className="px-3 py-1 text-xs font-medium bg-gradient-to-r from-yellow-900/50 to-amber-900/50 text-yellow-300 rounded-full border border-yellow-500/30"
                         >
                           {tag}
                         </span>
@@ -414,16 +440,16 @@ export default function Portfolio() {
 
       <section
         id="contact"
-        className="py-20 px-4 md:px-12 text-center bg-gradient-to-br from-emerald-50/50 via-blue-50/30 to-violet-50/50 relative"
+        className="py-20 px-4 md:px-12 text-center bg-gradient-to-br from-amber-900/20 via-black/30 to-yellow-900/20 relative"
       >
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_60%,rgba(34,197,94,0.1),transparent)] pointer-events-none"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_60%,rgba(245,158,11,0.15),transparent)] pointer-events-none"></div>
         <div className="relative z-10">
-          <h2 className="text-4xl font-bold mb-6 bg-gradient-to-r from-emerald-600 via-blue-600 to-violet-600 bg-clip-text text-transparent">
-            Let's Create Something Amazing
+          <h2 className="text-4xl font-bold mb-6 bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 bg-clip-text text-transparent">
+            Let's Build Something Extraordinary
           </h2>
-          <p className="text-lg text-slate-600 mb-8 max-w-2xl mx-auto">
-            Ready to collaborate on your next breakthrough project? Let's
-            connect and transform your vision into reality.
+          <p className="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">
+            Ready to architect the next generation of distributed systems? Let's
+            collaborate and engineer solutions that scale.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <a
@@ -431,7 +457,7 @@ export default function Portfolio() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Button className="bg-gradient-to-r from-emerald-500 to-blue-500 hover:from-emerald-600 hover:to-blue-600 text-white border-0 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 px-6 py-3 rounded-full font-medium">
+              <Button className="bg-gradient-to-r from-amber-600 to-yellow-600 hover:from-amber-500 hover:to-yellow-500 text-black border-0 shadow-lg hover:shadow-xl hover:shadow-amber-500/25 hover:scale-105 transition-all duration-300 px-6 py-3 rounded-full font-semibold">
                 📧 Email
               </Button>
             </a>
@@ -440,7 +466,7 @@ export default function Portfolio() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Button className="bg-gradient-to-r from-blue-500 to-violet-500 hover:from-blue-600 hover:to-violet-600 text-white border-0 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 px-6 py-3 rounded-full font-medium">
+              <Button className="bg-gradient-to-r from-yellow-600 to-amber-600 hover:from-yellow-500 hover:to-amber-500 text-black border-0 shadow-lg hover:shadow-xl hover:shadow-yellow-500/25 hover:scale-105 transition-all duration-300 px-6 py-3 rounded-full font-semibold">
                 💼 LinkedIn
               </Button>
             </a>
@@ -449,7 +475,7 @@ export default function Portfolio() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Button className="bg-gradient-to-r from-violet-500 to-emerald-500 hover:from-violet-600 hover:to-emerald-600 text-white border-0 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 px-6 py-3 rounded-full font-medium">
+              <Button className="bg-gradient-to-r from-amber-500 to-yellow-500 hover:from-amber-400 hover:to-yellow-400 text-black border-0 shadow-lg hover:shadow-xl hover:shadow-amber-500/25 hover:scale-105 transition-all duration-300 px-6 py-3 rounded-full font-semibold">
                 🚀 GitHub
               </Button>
             </a>
@@ -457,12 +483,12 @@ export default function Portfolio() {
         </div>
       </section>
 
-      <footer className="text-center py-8 text-sm text-slate-500 bg-gradient-to-r from-emerald-50 via-blue-50 to-violet-50 border-t border-white/20">
+      <footer className="text-center py-8 text-sm text-gray-400 bg-gradient-to-r from-black via-gray-900 to-black border-t border-amber-500/20">
         <p className="mb-2">
-          © 2025 Pranay Guda. Crafted with passion and precision.
+          © 2025 Pranay Guda. Engineered with precision and passion.
         </p>
-        <p className="text-xs text-slate-400">
-          Building the future, one line of code at a time.
+        <p className="text-xs text-gray-500">
+          Architecting the future, one distributed system at a time.
         </p>
       </footer>
     </div>
