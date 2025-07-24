@@ -201,6 +201,73 @@
     grid-template-columns: 1fr;
     gap: 1.5rem;
   }
+  
+  /* Mobile optimizations for diary section */
+  .sketch-container {
+    padding: 1rem;
+  }
+  
+  .sketch-card {
+    padding: 1.5rem;
+    margin: 1rem 0;
+  }
+  
+  /* Reduce notebook margin on mobile */
+  .notebook-style {
+    padding-left: 2rem;
+  }
+  
+  .notebook-style::before {
+    left: 1.5rem;
+  }
+  
+  .notebook-style::after {
+    width: 20px;
+  }
+}
+
+/* Additional mobile optimizations for smaller screens */
+@media (max-width: 480px) {
+  .sketch-container {
+    padding: 0.75rem;
+  }
+  
+  .sketch-card {
+    padding: 1rem;
+    margin: 0.75rem 0;
+    border-radius: 20px;
+  }
+  
+  .sketch-card::before {
+    border-radius: 25px;
+  }
+  
+  /* Further reduce notebook margin on small mobile */
+  .notebook-style {
+    padding-left: 1.5rem;
+  }
+  
+  .notebook-style::before {
+    left: 1rem;
+  }
+  
+  .notebook-style::after {
+    width: 15px;
+  }
+  
+  /* Optimize typography for mobile */
+  .sketch-heading {
+    font-size: 2rem;
+  }
+  
+  .sketch-subheading {
+    font-size: 1.5rem;
+  }
+  
+  .sketch-text {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
 }
 
 /* Card Variations */
