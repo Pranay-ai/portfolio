@@ -9,6 +9,11 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import Image from "next/image";
+import { motion } from "framer-motion";
+import SidebarMenu from "./SidebarMenu";
+import ScrollReveal from "./ScrollReveal";
+import DiarySection from "./DiarySection";
+import ParallaxBackground from "./ParallaxBackground";
 
 const fullProjectsData = [
   {
@@ -282,177 +287,259 @@ const education = {
 };
 
 const certifications = [
-  "AWS Certified Solutions Architect - Associate",
-  "AWS Certified Developer - Associate",
+  // Add your actual certifications here when you have them
 ];
 
 export default function Portfolio() {
   return (
-    <div className="min-h-screen bg-background">
-      <div className="sketch-container">
+    <div className="min-h-screen bg-background relative">
+      <ParallaxBackground />
+      <SidebarMenu />
+      <div className="sketch-container relative z-10">
         {/* Floating Doodles */}
-        <div
+        <motion.div
           className="doodle floating-element"
           style={{ top: "10%", left: "5%" }}
+          animate={{ y: [0, -20, 0], rotate: [0, 5, -5, 0] }}
+          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
         >
           🚀
-        </div>
-        <div
+        </motion.div>
+        <motion.div
           className="doodle floating-element"
           style={{ top: "20%", right: "8%" }}
+          animate={{ y: [0, -15, 0], x: [0, 10, 0] }}
+          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
         >
           ⭐
-        </div>
-        <div
+        </motion.div>
+        <motion.div
           className="doodle floating-element"
           style={{ top: "60%", left: "3%" }}
+          animate={{ scale: [1, 1.2, 1], rotate: [0, 10, 0] }}
+          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 2 }}
         >
           💡
-        </div>
-        <div
+        </motion.div>
+        <motion.div
           className="doodle floating-element"
           style={{ bottom: "20%", right: "5%" }}
+          animate={{ y: [0, -25, 0], rotate: [0, -5, 5, 0] }}
+          transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
         >
           🎯
-        </div>
-        <div
+        </motion.div>
+        <motion.div
           className="doodle floating-element"
           style={{ top: "40%", right: "2%" }}
+          animate={{ scale: [1, 0.8, 1.1, 1], opacity: [0.7, 1, 0.7] }}
+          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
         >
           ✨
-        </div>
+        </motion.div>
 
         {/* Hero Section */}
-        <div className="sketch-card" style={{ marginTop: "2rem" }}>
-          <div className="text-center relative">
-            <div
-              className="sketch-image mx-auto w-fit mb-6"
-              style={{ transform: "rotate(2deg)" }}
-            >
-              <Image
-                src="/1500.jpg"
-                alt="Pranay Guda"
-                width={150}
-                height={150}
-                className="w-32  robject-cover"
-              />
-            </div>
-            <h1 className="sketch-title">Hey! I'm Pranay Guda 👋</h1>
-            <p className="sketch-subheading">
-              Full-Stack Software Engineer & Problem Solver
-            </p>
-            <p className="sketch-text max-w-2xl mx-auto">
-              Passionate about building{" "}
-              <span className="sketch-highlight">distributed systems</span>,
-              <span className="sketch-highlight">
-                high-performance applications
-              </span>
-              , and
-              <span className="sketch-highlight">scalable solutions</span> that
-              make a real impact! I love turning complex problems into elegant,
-              efficient code. 🌟
-            </p>
+        <section id="hero" className="py-16">
+          <ScrollReveal direction="scale" delay={0.2}>
+            <div className="sketch-card paper-texture" style={{ marginTop: "2rem" }}>
+              <div className="text-center relative">
+                <motion.div
+                  className="sketch-image mx-auto w-fit mb-6"
+                  style={{ transform: "rotate(2deg)" }}
+                  whileHover={{ rotate: -2, scale: 1.05 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                >
+                  <Image
+                    src="/1500.jpg"
+                    alt="Pranay Guda"
+                    width={150}
+                    height={150}
+                    className="w-32 robject-cover"
+                  />
+                </motion.div>
+                
+                <motion.h1 
+                  className="sketch-title"
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3, duration: 0.8 }}
+                >
+                  Hey! I'm Pranay Guda 👋
+                </motion.h1>
+                
+                <motion.p 
+                  className="sketch-subheading typewriter-text inline-block"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.5, duration: 0.8 }}
+                >
+                  Full-Stack Software Engineer & Problem Solver
+                </motion.p>
+                
+                <motion.p 
+                  className="sketch-text max-w-2xl mx-auto mt-4"
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.7, duration: 0.8 }}
+                >
+                  Passionate about building{" "}
+                  <span className="sketch-highlight">distributed systems</span>,{" "}
+                  <span className="sketch-highlight">
+                    high-performance applications
+                  </span>
+                  , and{" "}
+                  <span className="sketch-highlight">scalable solutions</span> that
+                  make a real impact! I love turning complex problems into elegant,
+                  efficient code. 🌟
+                </motion.p>
 
-            {/* Quick Stats Scattered */}
-            <div className="mt-8 flex flex-wrap justify-center gap-4">
-              <div
-                className="sketch-highlight"
-                style={{ transform: "rotate(-2deg)" }}
-              >
-                <strong>15+</strong> Projects Built 🏗️
-              </div>
-              <div
-                className="sketch-highlight"
-                style={{ transform: "rotate(1deg)" }}
-              >
-                <strong>1+</strong> Years Experience 📅
-              </div>
-              <div
-                className="sketch-highlight"
-                style={{ transform: "rotate(-1deg)" }}
-              >
-                <strong>20+</strong> Technologies Mastered 🔧
+                {/* Quick Stats Scattered */}
+                <motion.div 
+                  className="mt-8 flex flex-wrap justify-center gap-4"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 1, duration: 0.8 }}
+                >
+                  <motion.div
+                    className="sketch-highlight"
+                    style={{ transform: "rotate(-2deg)" }}
+                    whileHover={{ rotate: 2, scale: 1.1 }}
+                  >
+                    <strong>15+</strong> Projects Built 🏗️
+                  </motion.div>
+                  <motion.div
+                    className="sketch-highlight"
+                    style={{ transform: "rotate(1deg)" }}
+                    whileHover={{ rotate: -1, scale: 1.1 }}
+                  >
+                    <strong>1+</strong> Years Experience 📅
+                  </motion.div>
+                  <motion.div
+                    className="sketch-highlight"
+                    style={{ transform: "rotate(-1deg)" }}
+                    whileHover={{ rotate: 1, scale: 1.1 }}
+                  >
+                    <strong>20+</strong> Technologies Mastered 🔧
+                  </motion.div>
+                </motion.div>
               </div>
             </div>
-          </div>
-        </div>
+          </ScrollReveal>
+        </section>
 
         {/* Current Role */}
-        <div className="sketch-card">
-          <h2 className="sketch-heading arrow-doodle">
-            Currently Building Amazing Things! 🚀
-          </h2>
-          <div className="relative">
-            <h3 className="sketch-subheading">
-              Full Stack Developer @ Innerjoy Ed
-            </h3>
-            <p className="sketch-text mb-4">
-              <strong>May 2024 - Present | Remote</strong>
-            </p>
-            <p className="sketch-text mb-4">
-              Leading the development of scalable educational platforms that
-              serve 10,000+ students! Building everything from high-performance
-              backend APIs to responsive frontend experiences.
-            </p>
-            <div className="flex flex-wrap gap-2 mb-4">
-              {["React.js", "Node.js", "MongoDB", "AWS", "JavaScript"].map(
-                (tech) => (
-                  <span key={tech} className="sketch-tag">
-                    {tech}
-                  </span>
-                )
-              )}
+        <section id="about" className="py-16">
+          <ScrollReveal direction="left" delay={0.2}>
+            <div className="sketch-card ink-splatter">
+              <h2 className="sketch-heading arrow-doodle scribble-underline">
+                Currently Building Amazing Things! 🚀
+              </h2>
+              <div className="relative">
+                <h3 className="sketch-subheading">
+                  Full Stack Developer @ Innerjoy Ed
+                </h3>
+                <p className="typewriter-text mb-4 inline-block">
+                  <strong>May 2024 - Present | Remote</strong>
+                </p>
+                <p className="sketch-text mb-4 text-lg">
+                  Leading the development of scalable educational platforms that
+                  serve 10,000+ students! Building everything from high-performance
+                  backend APIs to responsive frontend experiences.
+                </p>
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {["React.js", "Node.js", "MongoDB", "AWS", "JavaScript"].map(
+                    (tech, index) => (
+                      <motion.span 
+                        key={tech} 
+                        className="sketch-tag"
+                        initial={{ opacity: 0, scale: 0 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ delay: index * 0.1 + 0.5 }}
+                        whileHover={{ rotate: Math.random() * 10 - 5 }}
+                      >
+                        {tech}
+                      </motion.span>
+                    )
+                  )}
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
+          </ScrollReveal>
+        </section>
 
         {/* Featured Projects Section */}
-        <div className="sketch-card">
-          <h2 className="sketch-heading sketch-line">
-            🎯 Featured Projects That I'm Proud Of!
-          </h2>
-          <p className="sketch-text mb-6">
-            Here are some of the coolest distributed systems and
-            high-performance architectures I've built from scratch!
-          </p>
-        </div>
+        <section id="projects" className="py-16">
+          <ScrollReveal direction="rotate" delay={0.2}>
+            <div className="sketch-card paper-texture torn-edge">
+              <h2 className="sketch-heading sketch-line">
+                🎯 Featured Projects That I'm Proud Of!
+              </h2>
+              <p className="sketch-text mb-6 text-lg">
+                Here are some of the coolest distributed systems and
+                high-performance architectures I've built from scratch!
+              </p>
+            </div>
+          </ScrollReveal>
+        </section>
 
         {/* Project Cards Grid */}
         <div className="projects-grid">
           {fullProjectsData.map((project, index) => (
-            <Dialog key={project.title}>
-              <DialogTrigger asChild>
-                <div
-                  className={`sketch-card sketch-card-project cursor-pointer transition-transform`}
-                >
-                  <div className="sketch-image mb-4">
-                    <Image
-                      src={project.image}
-                      alt={project.title}
-                      width={300}
-                      height={200}
-                      className="w-full h-48 object-cover rounded-lg"
-                    />
-                  </div>
-                  <div>
-                    <h3 className="sketch-subheading">{project.title}</h3>
-                    <p className="sketch-text font-semibold text-secondary mb-2">
-                      {project.subtitle}
-                    </p>
-                    <p className="sketch-text mb-4">{project.description}</p>
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {project.tags.slice(0, 4).map((tag) => (
-                        <span key={tag} className="sketch-tag">
-                          {tag}
-                        </span>
-                      ))}
+            <ScrollReveal 
+              key={project.title}
+              direction={index % 2 === 0 ? 'left' : 'right'}
+              delay={index * 0.2}
+            >
+              <Dialog>
+                <DialogTrigger asChild>
+                  <motion.div
+                    className="sketch-card sketch-card-project cursor-pointer paper-texture"
+                    whileHover={{ 
+                      scale: 1.03, 
+                      rotate: Math.random() * 4 - 2,
+                      y: -10
+                    }}
+                    whileTap={{ scale: 0.98 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                  >
+                    <motion.div 
+                      className="sketch-image mb-4"
+                      whileHover={{ rotate: Math.random() * 6 - 3 }}
+                    >
+                      <Image
+                        src={project.image}
+                        alt={project.title}
+                        width={300}
+                        height={200}
+                        className="w-full h-48 object-cover rounded-lg"
+                      />
+                    </motion.div>
+                    <div>
+                      <h3 className="sketch-subheading scribble-underline">{project.title}</h3>
+                      <p className="typewriter-text text-sm mb-2 inline-block">
+                        {project.subtitle}
+                      </p>
+                      <p className="sketch-text mb-4">{project.description}</p>
+                      <div className="flex flex-wrap gap-2 mb-4">
+                        {project.tags.slice(0, 4).map((tag, tagIndex) => (
+                          <motion.span 
+                            key={tag} 
+                            className="sketch-tag"
+                            initial={{ opacity: 0, scale: 0 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ delay: tagIndex * 0.1 }}
+                            whileHover={{ rotate: Math.random() * 10 - 5 }}
+                          >
+                            {tag}
+                          </motion.span>
+                        ))}
+                      </div>
+                      <p className="sketch-text text-accent font-semibold">
+                        💡 {project.impact}
+                      </p>
                     </div>
-                    <p className="sketch-text text-accent font-semibold">
-                      💡 {project.impact}
-                    </p>
-                  </div>
-                </div>
-              </DialogTrigger>
+                  </motion.div>
+                </DialogTrigger>
 
               <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
                 <div className="p-6 space-y-6">
@@ -501,24 +588,29 @@ export default function Portfolio() {
                   </div>
                 </div>
               </DialogContent>
-            </Dialog>
+              </Dialog>
+            </ScrollReveal>
           ))}
         </div>
 
         {/* Work Experience Section */}
-        <div className="sketch-card">
-          <h2 className="sketch-heading sketch-line">
-            💼 My Professional Journey
-          </h2>
-          <p className="sketch-text mb-6">
-            Here's where I've been building amazing software and growing as an
-            engineer!
-          </p>
-        </div>
+        <section id="experience" className="py-16">
+          <ScrollReveal direction="up" delay={0.2}>
+            <div className="sketch-card notebook-style ink-splatter">
+              <h2 className="sketch-heading sketch-line">
+                💼 My Professional Journey
+              </h2>
+              <p className="sketch-text mb-6 text-lg">
+                Here's where I've been building amazing software and growing as an
+                engineer!
+              </p>
+            </div>
+          </ScrollReveal>
+        </section>
 
         {/* Experience Cards Grid */}
         <div className="experience-grid">
-          {fullExperienceData.map((exp, index) => (
+          {fullExperienceData.map((exp) => (
             <Dialog key={exp.company}>
               <DialogTrigger asChild>
                 <div
@@ -622,26 +714,45 @@ export default function Portfolio() {
           ))}
         </div>
 
+        {/* Add Diary Section */}
+        <DiarySection />
+
         {/* Skills & Technologies */}
-        <div className="sketch-card">
-          <h2 className="sketch-heading sketch-line">
-            🔧 My Technical Arsenal
-          </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {Object.entries(skillsAndTechnologies).map(([category, skills]) => (
-              <div key={category}>
-                <h3 className="sketch-subheading">{category}</h3>
-                <div className="flex flex-wrap gap-2">
-                  {skills.map((skill) => (
-                    <span key={skill} className="sketch-tag">
-                      {skill}
-                    </span>
-                  ))}
-                </div>
+        <section id="skills" className="py-16">
+          <ScrollReveal direction="rotate" delay={0.2}>
+            <div className="sketch-card paper-texture torn-edge">
+              <h2 className="sketch-heading sketch-line">
+                🔧 My Technical Arsenal
+              </h2>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {Object.entries(skillsAndTechnologies).map(([category, skills], catIndex) => (
+                  <motion.div 
+                    key={category}
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: catIndex * 0.1 }}
+                  >
+                    <h3 className="sketch-subheading scribble-underline">{category}</h3>
+                    <div className="flex flex-wrap gap-2">
+                      {skills.map((skill, skillIndex) => (
+                        <motion.span 
+                          key={skill} 
+                          className="sketch-tag"
+                          initial={{ opacity: 0, scale: 0 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          transition={{ delay: catIndex * 0.1 + skillIndex * 0.05 }}
+                          whileHover={{ rotate: Math.random() * 10 - 5 }}
+                        >
+                          {skill}
+                        </motion.span>
+                      ))}
+                    </div>
+                  </motion.div>
+                ))}
               </div>
-            ))}
-          </div>
-        </div>
+            </div>
+          </ScrollReveal>
+        </section>
 
         {/* Education */}
         <div className="sketch-card">
@@ -668,62 +779,88 @@ export default function Portfolio() {
             </div>
           </div>
 
-          <div>
-            <h3 className="sketch-subheading">🏆 Certifications</h3>
-            <div className="flex flex-wrap gap-2">
-              {certifications.map((cert) => (
-                <span key={cert} className="sketch-tag">
-                  {cert}
-                </span>
-              ))}
+          {certifications.length > 0 && (
+            <div>
+              <h3 className="sketch-subheading">🏆 Certifications</h3>
+              <div className="flex flex-wrap gap-2">
+                {certifications.map((cert) => (
+                  <span key={cert} className="sketch-tag">
+                    {cert}
+                  </span>
+                ))}
+              </div>
             </div>
-          </div>
+          )}
         </div>
 
         {/* Contact Section */}
-        <div className="sketch-card text-center">
-          <h2 className="sketch-heading">
-            🤝 Let's Build Something Amazing Together!
-          </h2>
-          <p className="sketch-text text-lg mb-8">
-            Ready to create the next big thing? I'm always excited to work on
-            challenging projects and collaborate with awesome people! Drop me a
-            line! ✨
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <a href="mailto:gudapranaynetha@gmail.com" className="sketch-btn">
-              📧 Email Me!
-            </a>
-            <a
-              href="https://www.linkedin.com/in/netha-pranay-10guda/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="sketch-btn"
-            >
-              💼 LinkedIn
-            </a>
-            <a
-              href="https://github.com/Pranay-ai"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="sketch-btn"
-            >
-              🚀 GitHub
-            </a>
-          </div>
-        </div>
+        <section id="contact" className="py-16">
+          <ScrollReveal direction="scale" delay={0.2}>
+            <div className="sketch-card text-center paper-texture ink-splatter">
+              <h2 className="sketch-heading scribble-underline">
+                🤝 Let's Build Something Amazing Together!
+              </h2>
+              <p className="sketch-text text-lg mb-8">
+                Ready to create the next big thing? I'm always excited to work on
+                challenging projects and collaborate with awesome people! Drop me a
+                line! ✨
+              </p>
+              <div className="flex flex-wrap justify-center gap-4">
+                <motion.a 
+                  href="mailto:gudapranaynetha@gmail.com" 
+                  className="sketch-btn"
+                  whileHover={{ y: -5, rotate: 2 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  📧 Email Me!
+                </motion.a>
+                <motion.a
+                  href="https://www.linkedin.com/in/netha-pranay-10guda/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="sketch-btn"
+                  whileHover={{ y: -5, rotate: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  💼 LinkedIn
+                </motion.a>
+                <motion.a
+                  href="https://github.com/Pranay-ai"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="sketch-btn"
+                  whileHover={{ y: -5, rotate: 1 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  🚀 GitHub
+                </motion.a>
+              </div>
+            </div>
+          </ScrollReveal>
+        </section>
 
         {/* Fun Footer */}
-        <div className="sketch-card text-center">
-          <p className="sketch-text text-lg">
-            © 2025 Pranay Guda | Made with ❤️, lots of ☕, and a sprinkle of ✨
-            magic!
-          </p>
-          <p className="sketch-text text-secondary mt-2">
-            "Code is like humor. When you have to explain it, it's bad." - Cory
-            House 😄
-          </p>
-        </div>
+        <ScrollReveal direction="up" delay={0.2}>
+          <div className="sketch-card text-center sticky-note">
+            <motion.p 
+              className="sketch-text text-lg"
+              animate={{ opacity: [0.8, 1, 0.8] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            >
+              © 2025 Pranay Guda | Made with ❤️, lots of ☕, and a sprinkle of ✨
+              magic!
+            </motion.p>
+            <motion.p 
+              className="sketch-text text-secondary mt-2 typewriter-text inline-block"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1 }}
+            >
+              "Code is like humor. When you have to explain it, it's bad." - Cory
+              House 😄
+            </motion.p>
+          </div>
+        </ScrollReveal>
       </div>
     </div>
   );

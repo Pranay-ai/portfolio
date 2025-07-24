@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Caveat:wght@400;600;700&family=Indie+Flower&family=Permanent+Marker&family=Amatic+SC:wght@400;700&family=Architects+Daughter&family=Coming+Soon&family=Shadows+Into+Light&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -7,14 +6,17 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-handwriting: 'Kalam', cursive;
-  --font-decorative: 'Caveat', cursive;
-  --font-casual: 'Indie Flower', cursive;
-  --font-marker: 'Permanent Marker', cursive;
-  --font-comic: 'Amatic SC', cursive;
-  --font-sketch: 'Architects Daughter', cursive;
-  --font-fun: 'Coming Soon', cursive;
-  --font-shadow: 'Shadows Into Light', cursive;
+  --font-handwriting: var(--font-handwriting), 'Comic Sans MS', fantasy, sans-serif;
+  --font-decorative: var(--font-decorative), 'Brush Script MT', fantasy, sans-serif;
+  --font-casual: var(--font-casual), 'Comic Sans MS', fantasy, sans-serif;
+  --font-marker: var(--font-marker), 'Impact', fantasy, sans-serif;
+  --font-comic: var(--font-comic), 'Comic Sans MS', fantasy, sans-serif;
+  --font-sketch: var(--font-sketch), 'Trebuchet MS', fantasy, sans-serif;
+  --font-fun: var(--font-fun), 'Trebuchet MS', fantasy, sans-serif;
+  --font-shadow: var(--font-shadow), 'Brush Script MT', fantasy, sans-serif;
+  --font-typewriter: var(--font-typewriter), 'Courier New', monospace, sans-serif;
+  --font-typewriter-alt: var(--font-typewriter-alt), 'Courier New', monospace, sans-serif;
+  --font-graffiti: var(--font-graffiti), 'Impact', fantasy, sans-serif;
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -128,9 +130,12 @@
     font-family: var(--font-handwriting);
     line-height: 1.6;
     background-image: 
-      url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23f97316' fill-opacity='0.05'%3E%3Cpath d='m36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"),
-      radial-gradient(circle at 20% 80%, rgba(249, 115, 22, 0.1) 0%, transparent 70%),
-      radial-gradient(circle at 80% 20%, rgba(124, 45, 18, 0.08) 0%, transparent 70%);
+      url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23f97316' fill-opacity='0.03'%3E%3Cpath d='M20 20c0-8.837 7.163-16 16-16s16 7.163 16 16-7.163 16-16 16-16-7.163-16-16zm32 32c0-8.837 7.163-16 16-16s16 7.163 16 16-7.163 16-16 16-16-7.163-16-16z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"),
+      url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23dc2626' fill-opacity='0.02'%3E%3Cpath d='M20 20c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10-10-4.477-10-10z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"),
+      radial-gradient(circle at 20% 80%, rgba(249, 115, 22, 0.08) 0%, transparent 70%),
+      radial-gradient(circle at 80% 20%, rgba(124, 45, 18, 0.06) 0%, transparent 70%),
+      radial-gradient(circle at 50% 50%, rgba(220, 38, 38, 0.03) 0%, transparent 60%);
+    background-size: 80px 80px, 40px 40px, 100% 100%, 100% 100%, 100% 100%;
   }
 }
 
@@ -436,4 +441,185 @@
 @keyframes twinkle {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.5; }
+}
+
+/* Typewriter Styles */
+.typewriter-text {
+  font-family: var(--font-typewriter);
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--foreground);
+  background: rgba(255, 255, 255, 0.9);
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
+  position: relative;
+}
+
+.typewriter-text::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    transparent,
+    transparent 1.8rem,
+    rgba(124, 45, 18, 0.1) 1.8rem,
+    rgba(124, 45, 18, 0.1) calc(1.8rem + 1px)
+  );
+  pointer-events: none;
+  border-radius: 8px;
+}
+
+/* Paper Texture Effects */
+.paper-texture {
+  position: relative;
+  background: var(--card);
+}
+
+.paper-texture::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 20% 20%, rgba(0,0,0,0.02) 1px, transparent 1px),
+    radial-gradient(circle at 80% 80%, rgba(0,0,0,0.02) 1px, transparent 1px),
+    radial-gradient(circle at 40% 60%, rgba(0,0,0,0.01) 1px, transparent 1px);
+  background-size: 20px 20px, 30px 30px, 15px 15px;
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+/* Hand-drawn Border Styles */
+.sketch-border-wavy {
+  border: none;
+  position: relative;
+  padding: 2rem;
+  background: var(--card);
+}
+
+.sketch-border-wavy::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  background: none;
+  border: 3px solid transparent;
+  border-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpath d='M10,10 Q20,5 30,10 T50,10 T70,10 T90,10 L90,90 Q85,95 80,90 T60,90 T40,90 T20,90 L10,90 Q5,85 10,80 T10,60 T10,40 T10,20 Z' fill='none' stroke='%23f97316' stroke-width='3'/%3E%3C/svg%3E") 30;
+  border-image-repeat: repeat;
+}
+
+/* Ink Splatter Effects */
+.ink-splatter {
+  position: relative;
+}
+
+.ink-splatter::after {
+  content: '●';
+  position: absolute;
+  font-size: 0.5rem;
+  color: var(--secondary);
+  opacity: 0.3;
+  top: 10%;
+  right: 10%;
+  animation: splatter 4s ease-in-out infinite;
+}
+
+@keyframes splatter {
+  0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.3; }
+  50% { transform: scale(1.5) rotate(180deg); opacity: 0.1; }
+}
+
+/* Scribble Lines */
+.scribble-underline {
+  position: relative;
+}
+
+.scribble-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--secondary);
+  clip-path: polygon(0% 50%, 10% 0%, 20% 100%, 30% 20%, 40% 80%, 50% 10%, 60% 90%, 70% 30%, 80% 70%, 90% 0%, 100% 50%);
+  opacity: 0.7;
+}
+
+/* Notebook Margins */
+.notebook-style {
+  position: relative;
+  padding-left: 4rem;
+  background: var(--card);
+}
+
+.notebook-style::before {
+  content: '';
+  position: absolute;
+  left: 3rem;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--accent);
+  opacity: 0.3;
+}
+
+.notebook-style::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 30px;
+  background: rgba(249, 115, 22, 0.1);
+  border-right: 2px solid rgba(249, 115, 22, 0.2);
+}
+
+/* Torn Paper Edge */
+.torn-edge {
+  position: relative;
+  margin-top: 2rem;
+}
+
+.torn-edge::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 0;
+  right: 0;
+  height: 10px;
+  background: var(--card);
+  clip-path: polygon(0% 100%, 5% 0%, 10% 100%, 15% 0%, 20% 100%, 25% 0%, 30% 100%, 35% 0%, 40% 100%, 45% 0%, 50% 100%, 55% 0%, 60% 100%, 65% 0%, 70% 100%, 75% 0%, 80% 100%, 85% 0%, 90% 100%, 95% 0%, 100% 100%);
+}
+
+/* Sticky Note Style */
+.sticky-note {
+  background: #fffacd;
+  border: 1px solid #e6d690;
+  border-radius: 0 0 5px 5px;
+  position: relative;
+  padding: 1rem;
+  margin: 1rem 0;
+  transform: rotate(-1deg);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  font-family: var(--font-casual);
+}
+
+.sticky-note::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: 10px;
+  width: 50px;
+  height: 10px;
+  background: rgba(0,0,0,0.1);
+  border-radius: 0 0 5px 5px;
 }
