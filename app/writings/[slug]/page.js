@@ -3,7 +3,7 @@ import ReactMarkdown from "react-markdown";
 import Link from "next/link";
 
 export default async function Writing({ params }) {
-  const { slug } = params;
+  const { slug } = await params;
   const writingData = await getContentData("writings", slug);
 
   return (

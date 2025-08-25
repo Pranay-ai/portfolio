@@ -1,9 +1,5 @@
 "use client";
-import { useRef, useEffect } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
+import { useRef, useEffect, useState } from "react";
 
 const experienceData = [
   {
@@ -28,50 +24,83 @@ const experienceData = [
 
 export default function Experience() {
   const sectionRef = useRef(null);
-  const cardsRef = useRef([]);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
     if (!sectionRef.current) return;
 
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top top",
-          end: "+=" + experienceData.length * window.innerHeight, // scroll length = numCards * 100vh
-          scrub: true,
-          pin: true,
-        },
-      });
+    let isScrolling = false;
+    let scrollTimer;
 
-      // fade in/out each card one after the other
-      cardsRef.current.forEach((card, i) => {
-        tl.to(card, { opacity: 1, duration: 1 }, i);
+    const handleScroll = () => {
+      if (!sectionRef.current) return;
 
-        if (i !== cardsRef.current.length - 1) {
-          tl.to(card, { opacity: 0, duration: 1 }, i + 0.8);
-        }
-      });
-    }, sectionRef);
+      const rect = sectionRef.current.getBoundingClientRect();
+      const sectionHeight = sectionRef.current.offsetHeight;
+      const viewportHeight = window.innerHeight;
 
-    return () => ctx.revert();
+      // Calculate scroll progress within the section
+      if (rect.top <= 0 && rect.bottom >= viewportHeight) {
+        const progress = Math.abs(rect.top) / (sectionHeight - viewportHeight);
+        const clampedProgress = Math.max(0, Math.min(1, progress));
+
+        setScrollProgress(clampedProgress);
+
+        // Calculate which card should be active
+        const cardIndex = Math.min(
+          Math.floor(clampedProgress * experienceData.length),
+          experienceData.length - 1
+        );
+
+        setCurrentIndex(cardIndex);
+      }
+
+      // Debounced scroll end detection
+      isScrolling = true;
+      clearTimeout(scrollTimer);
+      scrollTimer = setTimeout(() => {
+        isScrolling = false;
+      }, 150);
+    };
+
+    // Intersection Observer for section visibility
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            window.addEventListener("scroll", handleScroll, { passive: true });
+          } else {
+            window.removeEventListener("scroll", handleScroll);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    observer.observe(sectionRef.current);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("scroll", handleScroll);
+      clearTimeout(scrollTimer);
+    };
   }, []);
 
   return (
     <section
       id="experience"
       ref={sectionRef}
-      className="bg-[--porcelain] relative"
+      className="bg-[--porcelain] relative min-h-[400vh]" // Make it tall for scrolling
     >
-      <div className="h-screen flex flex-col items-center justify-center">
+      <div className="sticky top-0 h-screen flex flex-col items-center justify-center">
         <div className="relative w-full max-w-3xl px-6">
           {experienceData.map((exp, i) => (
             <div
               key={i}
-              ref={(el) => {
-                if (el) cardsRef.current[i] = el;
-              }}
-              className="absolute inset-0 flex flex-col items-center justify-center text-center opacity-0"
+              className={`absolute inset-0 flex flex-col items-center justify-center text-center transition-opacity duration-500 ${
+                i === currentIndex ? "opacity-100" : "opacity-0"
+              }`}
             >
               <p className="text-lg font-medium text-gray-500">{exp.date}</p>
               <h2 className="font-headline text-3xl md:text-5xl mt-2">
@@ -83,6 +112,20 @@ export default function Experience() {
               <p className="mt-6 text-lg text-gray-600">{exp.desc}</p>
             </div>
           ))}
+        </div>
+
+        {/* Progress indicator */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
+          <div className="flex space-x-2">
+            {experienceData.map((_, i) => (
+              <div
+                key={i}
+                className={`w-2 h-2 rounded-full transition-colors duration-300 ${
+                  i === currentIndex ? "bg-gray-800" : "bg-gray-300"
+                }`}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </section>

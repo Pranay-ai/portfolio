@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image"; // Import the Next.js Image component
 
 export default async function Project({ params }) {
-  const { slug } = params;
+  const { slug } = await params;
   const projectData = await getContentData("projects", slug);
 
   return (

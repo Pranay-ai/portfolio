@@ -1,52 +1,53 @@
 "use client";
-import { useRef, useEffect } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
-import gsap from "gsap";
-import { TextPlugin } from "gsap/TextPlugin";
-
-gsap.registerPlugin(TextPlugin);
 
 export default function Hero() {
-  const textRef = useRef(null);
+  const phrases = [
+    "Backend-focused full-stack engineer",
+    "Scaling distributed systems",
+    "Turning complexity into simplicity",
+  ];
+
+  const [text, setText] = useState("");
+  const [phraseIndex, setPhraseIndex] = useState(0);
+  const [charIndex, setCharIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
-    if (!textRef.current) return;
+    const current = phrases[phraseIndex];
+    let timeout;
 
-    const phrases = [
-      "Backend-focused full-stack engineer",
-      "Scaling distributed systems",
-      "Turning complexity into simplicity",
-    ];
+    if (!isDeleting && charIndex < current.length) {
+      // typing forward
+      timeout = setTimeout(() => {
+        setText((prev) => prev + current[charIndex]);
+        setCharIndex((prev) => prev + 1);
+      }, 80);
+    } else if (isDeleting && charIndex > 0) {
+      // deleting backward
+      timeout = setTimeout(() => {
+        setText((prev) => prev.slice(0, -1));
+        setCharIndex((prev) => prev - 1);
+      }, 50);
+    } else if (!isDeleting && charIndex === current.length) {
+      // pause before deleting
+      timeout = setTimeout(() => setIsDeleting(true), 1200);
+    } else if (isDeleting && charIndex === 0) {
+      // move to next phrase
+      setIsDeleting(false);
+      setPhraseIndex((prev) => (prev + 1) % phrases.length);
+    }
 
-    // Create timeline
-    const tl = gsap.timeline({ repeat: -1, repeatDelay: 1 });
-
-    phrases.forEach((phrase) => {
-      tl.to(textRef.current, {
-        duration: 2,
-        text: phrase,
-        ease: "none",
-      })
-        .to({}, { duration: 1 }) // pause
-        .to(textRef.current, {
-          duration: 1.5,
-          text: "",
-          ease: "none",
-        });
-    });
-
-    // ✅ Clean up timeline when component unmounts
-    return () => {
-      tl.kill();
-    };
-  }, []);
+    return () => clearTimeout(timeout);
+  }, [charIndex, isDeleting, phraseIndex]);
 
   return (
     <section className="min-h-screen flex items-center justify-center bg-[--porcelain] px-6">
       <div className="text-center max-w-5xl">
         {/* Headline with typing effect */}
         <h1 className="font-headline text-5xl md:text-7xl lg:text-8xl tracking-tight leading-tight">
-          <span ref={textRef}></span>
+          {text}
           <span className="ml-2 inline-block w-[2px] h-10 bg-black animate-blink"></span>
         </h1>
 
@@ -59,7 +60,7 @@ export default function Hero() {
         <div className="mt-12">
           <Link
             href="/#experience"
-            className="inline-block bg-[--onyx] text-black font-extrabold py-3 px-10 rounded-full text-lg transition-all duration-300 hover:scale-105 hover:bg-[--soft-gold] hover:text-[--onyx]"
+            className="inline-block bg-[--onyx] text-black  font-extrabold py-3 px-10 rounded-full text-lg transition-all duration-300 hover:scale-105 hover:bg-[--soft-gold] hover:text-[--onyx]"
           >
             View My Work
           </Link>
