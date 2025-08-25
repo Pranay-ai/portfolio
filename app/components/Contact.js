@@ -5,7 +5,9 @@ export default function Contact() {
       className="bg-[--porcelain] py-24 md:py-32 text-center"
     >
       <div className="mx-auto max-w-2xl px-6 sm:px-8 lg:px-12">
-        <h2 className="font-headline text-3xl md:text-4xl">Let's Connect</h2>
+        <h2 className="font-headline text-3xl md:text-4xl">
+          {"Let's Connect"}
+        </h2>
         <p className="mt-4 text-lg text-gray-600">
           Open to new opportunities and collaborations.
         </p>

@@ -1,10 +1,11 @@
+import Image from "next/image";
 export default function About() {
   return (
     <section id="about" className="bg-[--porcelain] py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12 grid md:grid-cols-3 gap-12 items-start">
         <div className="md:col-span-1 flex justify-center">
           <div className="w-36 h-36 md:w-44 md:h-44 bg-gray-300 rounded-full overflow-hidden shadow-xl ring-1 ring-white/50">
-            <img
+            <Image
               src="png.jpeg"
               alt="Portrait of Pranay Netha Guda"
               className="w-full h-full object-cover"
