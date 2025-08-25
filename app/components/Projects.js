@@ -2,18 +2,21 @@ import Link from "next/link";
 
 export default function Projects({ projects }) {
   return (
-    <div id="projects" className="py-16 mx-16  md:py-24 bg-[--porcelain] ">
+    <div
+      id="projects"
+      className="py-16 xl:mx-16 lg:mx-6  md:py-24 bg-[--porcelain] "
+    >
       <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12 text-center mb-16">
         <h2 className="font-headline text-3xl md:text-4xl">Key Projects</h2>
       </div>
-      <div className="space-y-8 md:space-y-16">
+      <div className="space-y-8 md:space-y-16 md:w-full">
         {projects.map(({ id, title, description, color }) => (
           <section
             key={id}
             style={{ backgroundColor: `var(--${color})` }}
             className="py-16 md:py-24"
           >
-            <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12 grid md:grid-cols-2 gap-12 items-center">
+            <div className="mx-auto xl:max-w-7xl sm:w-full  md:w-full px-6 sm:px-8 lg:px-12 grid md:grid-cols-2 gap-12 items-center">
               <div className="space-y-4 text-center md:text-left">
                 <h3 className="font-headline text-2xl md:text-3xl">{title}</h3>
                 <p className="text-lg text-gray-700 max-w-md mx-auto md:mx-0">

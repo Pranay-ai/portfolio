@@ -19,7 +19,7 @@ export default function Contact() {
             Email
           </a>
           <a
-            href="https://github.com/pranaynetha"
+            href="http://github.com/Pranay-ai"
             target="_blank"
             rel="noopener noreferrer"
             className="font-medium text-[--onyx] hover:text-[--soft-gold] transition-colors"
@@ -27,7 +27,7 @@ export default function Contact() {
             GitHub
           </a>
           <a
-            href="https://www.linkedin.com/in/pranay-netha-guda/"
+            href="https://www.linkedin.com/in/netha-pranay-10guda/"
             target="_blank"
             rel="noopener noreferrer"
             className="font-medium text-[--onyx] hover:text-[--soft-gold] transition-colors"
