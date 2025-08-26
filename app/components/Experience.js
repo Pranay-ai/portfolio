@@ -25,76 +25,71 @@ const experienceData = [
 export default function Experience() {
   const sectionRef = useRef(null);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
-    if (!sectionRef.current) return;
+    const el = sectionRef.current;
+    if (!el) return;
 
-    let isScrolling = false;
-    let scrollTimer;
+    let ticking = false;
 
     const handleScroll = () => {
-      if (!sectionRef.current) return;
-
-      const rect = sectionRef.current.getBoundingClientRect();
-      const sectionHeight = sectionRef.current.offsetHeight;
+      const rect = el.getBoundingClientRect();
+      const sectionHeight = el.offsetHeight;
       const viewportHeight = window.innerHeight;
 
-      // Calculate scroll progress within the section
       if (rect.top <= 0 && rect.bottom >= viewportHeight) {
-        const progress = Math.abs(rect.top) / (sectionHeight - viewportHeight);
-        const clampedProgress = Math.max(0, Math.min(1, progress));
-
-        setScrollProgress(clampedProgress);
-
-        // Calculate which card should be active
-        const cardIndex = Math.min(
-          Math.floor(clampedProgress * experienceData.length),
+        const progress =
+          Math.abs(rect.top) / Math.max(1, sectionHeight - viewportHeight);
+        const clamped = Math.min(1, Math.max(0, progress));
+        const idx = Math.min(
+          Math.floor(clamped * experienceData.length),
           experienceData.length - 1
         );
-
-        setCurrentIndex(cardIndex);
+        setCurrentIndex(idx);
       }
-
-      // Debounced scroll end detection
-      isScrolling = true;
-      clearTimeout(scrollTimer);
-      scrollTimer = setTimeout(() => {
-        isScrolling = false;
-      }, 150);
+      ticking = false;
     };
 
-    // Intersection Observer for section visibility
+    const onScroll = () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(handleScroll);
+      }
+    };
+
+    // initial paint
+    handleScroll();
+
     const observer = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            window.addEventListener("scroll", handleScroll, { passive: true });
-          } else {
-            window.removeEventListener("scroll", handleScroll);
-          }
-        });
+        const inView = entries.some((e) => e.isIntersecting);
+        if (inView)
+          window.addEventListener("scroll", onScroll, { passive: true });
+        else window.removeEventListener("scroll", onScroll);
       },
       { threshold: 0.1 }
     );
 
-    observer.observe(sectionRef.current);
+    observer.observe(el);
 
     return () => {
       observer.disconnect();
-      window.removeEventListener("scroll", handleScroll);
-      clearTimeout(scrollTimer);
+      window.removeEventListener("scroll", onScroll);
     };
   }, []);
 
   return (
     <section
       id="experience"
-      ref={sectionRef}
-      className="bg-[--porcelain] relative min-h-[400vh]" // Make it tall for scrolling
+      // 👇 callback ref ensures React always sees a valid ref function
+      ref={(node) => {
+        sectionRef.current = node;
+      }}
+      className="bg-[--porcelain] relative min-h-[400vh]"
     >
-      <div className="sticky top-0 h-screen flex flex-col items-center justify-center">
-        <div className="relative w-full max-w-3xl px-6">
+      <div className="sticky top-0 h-[100svh] flex flex-col items-center justify-center">
+        {/* give absolute children a containing height */}
+        <div className="relative w-full max-w-3xl px-6 h-full will-change-transform">
           {experienceData.map((exp, i) => (
             <div
               key={i}
@@ -114,8 +109,7 @@ export default function Experience() {
           ))}
         </div>
 
-        {/* Progress indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
           <div className="flex space-x-2">
             {experienceData.map((_, i) => (
               <div
