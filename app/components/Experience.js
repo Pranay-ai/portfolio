@@ -25,6 +25,15 @@ const experienceData = [
 export default function Experience() {
   const sectionRef = useRef(null);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isSafari, setIsSafari] = useState(false);
+
+  useEffect(() => {
+    // Check if browser is Safari
+    const userAgent = navigator.userAgent.toLowerCase();
+    const isSafariBrowser =
+      userAgent.includes("safari/") && !userAgent.includes("chrome/");
+    setIsSafari(isSafariBrowser);
+  }, []);
 
   useEffect(() => {
     const el = sectionRef.current;
@@ -32,6 +41,7 @@ export default function Experience() {
 
     let ticking = false;
     let isIntersecting = false;
+    let observer;
 
     const handleScroll = () => {
       if (!isIntersecting || !el) {
@@ -41,7 +51,6 @@ export default function Experience() {
 
       const rect = el.getBoundingClientRect();
       const sectionHeight = el.offsetHeight;
-      // Use window.innerHeight instead of viewport height for better Safari compatibility
       const viewportHeight = window.innerHeight;
 
       // More reliable check for when section is in scroll area
@@ -70,36 +79,45 @@ export default function Experience() {
       }
     };
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          isIntersecting = entry.isIntersecting;
+    // Safari-compatible IntersectionObserver initialization
+    try {
+      observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            isIntersecting = entry.isIntersecting;
 
-          if (isIntersecting) {
-            // Add scroll listener when in view
-            window.addEventListener("scroll", onScroll, { passive: true });
-            // Initial calculation when entering view
-            setTimeout(handleScroll, 10);
-          } else {
-            // Remove scroll listener when out of view
-            window.removeEventListener("scroll", onScroll);
-          }
-        });
-      },
-      {
-        threshold: [0, 0.1],
-        // Add rootMargin for better Safari detection
-        rootMargin: "50px 0px",
-      }
-    );
+            if (isIntersecting) {
+              // Add scroll listener when in view
+              window.addEventListener("scroll", onScroll, { passive: true });
+              // Initial calculation when entering view
+              setTimeout(handleScroll, 10);
+            } else {
+              // Remove scroll listener when out of view
+              window.removeEventListener("scroll", onScroll);
+            }
+          });
+        },
+        {
+          threshold: [0, 0.1],
+          rootMargin: "50px 0px",
+        }
+      );
 
-    observer.observe(el);
+      observer.observe(el);
+    } catch (e) {
+      console.error("IntersectionObserver not supported:", e);
+      // Fallback for browsers without IntersectionObserver
+      window.addEventListener("scroll", onScroll, { passive: true });
+      setTimeout(handleScroll, 100);
+    }
 
     // Initial check in case already in view
     setTimeout(handleScroll, 100);
 
     return () => {
-      observer.disconnect();
+      if (observer) {
+        observer.disconnect();
+      }
       window.removeEventListener("scroll", onScroll);
     };
   }, [currentIndex]);
@@ -113,6 +131,7 @@ export default function Experience() {
         minHeight: "400vh",
         // Ensure consistent behavior across browsers
         WebkitTransform: "translateZ(0)",
+        transform: "translateZ(0)",
       }}
     >
       <div
@@ -122,6 +141,12 @@ export default function Experience() {
           // Safari-specific fixes
           WebkitTransform: "translateZ(0)",
           transform: "translateZ(0)",
+          // Add perspective for Safari hardware acceleration
+          WebkitPerspective: "1000",
+          perspective: "1000",
+          // Prevent flickering in Safari
+          WebkitBackfaceVisibility: "hidden",
+          backfaceVisibility: "hidden",
         }}
       >
         <div className="relative w-full max-w-3xl px-6 h-full">
@@ -135,6 +160,11 @@ export default function Experience() {
                 // Ensure smooth transitions in Safari
                 WebkitTransform: "translateZ(0)",
                 transform: "translateZ(0)",
+                // Add will-change for better performance
+                willChange: "opacity",
+                // Prevent flickering
+                WebkitBackfaceVisibility: "hidden",
+                backfaceVisibility: "hidden",
               }}
             >
               <p className="text-lg font-medium text-gray-500">{exp.date}</p>
