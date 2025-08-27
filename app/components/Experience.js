@@ -2,24 +2,7 @@
 import { useRef, useEffect, useState } from "react";
 
 const experienceData = [
-  {
-    company: "Innerjoy Ed",
-    role: "Full Stack Developer",
-    date: "May 2024 – Present",
-    desc: "Architected secure NestJS APIs and built an AI-powered curriculum tool with LangChain, optimizing API performance by 50%.",
-  },
-  {
-    company: "One Community Inc.",
-    role: "Volunteer Software Engineer",
-    date: "Apr 2024 – Jul 2024",
-    desc: "Developed RESTful APIs for a global volunteer network, improving server responsiveness by 40%.",
-  },
-  {
-    company: "CSU, Fullerton",
-    role: "Teaching Associate",
-    date: "Aug 2023 – Jun 2024",
-    desc: "Taught Data Structures in C++ to over 70 students, redesigning the curriculum to raise average exam scores from 74% to 85%.",
-  },
+  /* …your items… */
 ];
 
 export default function Experience() {
@@ -37,6 +20,7 @@ export default function Experience() {
       const sectionHeight = el.offsetHeight;
       const viewportHeight = window.innerHeight;
 
+      // compute progress only while section spans the viewport
       if (rect.top <= 0 && rect.bottom >= viewportHeight) {
         const progress =
           Math.abs(rect.top) / Math.max(1, sectionHeight - viewportHeight);
@@ -46,6 +30,10 @@ export default function Experience() {
           experienceData.length - 1
         );
         setCurrentIndex(idx);
+      } else if (rect.top > 0) {
+        setCurrentIndex(0); // before entering, show first
+      } else if (rect.bottom < viewportHeight) {
+        setCurrentIndex(experienceData.length - 1); // after leaving, show last
       }
       ticking = false;
     };
@@ -59,37 +47,26 @@ export default function Experience() {
 
     // initial paint
     handleScroll();
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const inView = entries.some((e) => e.isIntersecting);
-        if (inView)
-          window.addEventListener("scroll", onScroll, { passive: true });
-        else window.removeEventListener("scroll", onScroll);
-      },
-      { threshold: 0.1 }
-    );
-
-    observer.observe(el);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll, { passive: true });
 
     return () => {
-      observer.disconnect();
       window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
     };
   }, []);
 
   return (
     <section
       id="experience"
-      // 👇 callback ref ensures React always sees a valid ref function
       ref={(node) => {
         sectionRef.current = node;
       }}
       className="bg-[--porcelain] relative min-h-[400vh]"
     >
-      <div className="sticky top-0 h-[100svh] flex flex-col items-center justify-center">
-        {/* give absolute children a containing height */}
-        <div className="relative w-full max-w-3xl px-6 h-full will-change-transform">
+      {/* Sticky viewport panel — fallback first, then optional dvh override */}
+      <div className="sticky top-0 h-screen [height:100vh] [height:100dvh] will-change-[opacity] [backface-visibility:hidden] flex flex-col items-center justify-center">
+        <div className="relative w-full max-w-3xl px-6 h-full">
           {experienceData.map((exp, i) => (
             <div
               key={i}
