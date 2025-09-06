@@ -1,42 +1,113 @@
+"use client";
+
 import Link from "next/link";
+import { useRef } from "react";
+
+const cardColors = [
+  "var(--mist-blue)",
+  "var(--dusty-rose)",
+  "var(--sage-mist)",
+  "var(--porcelain)",
+];
 
 export default function Projects({ projects }) {
+  const scrollerRef = useRef(null);
+
+  const scrollByAmount = (dir) => {
+    const el = scrollerRef.current;
+    if (!el) return;
+    const amount = Math.round(el.clientWidth * 0.9) * (dir === "next" ? 1 : -1);
+    el.scrollBy({ left: amount, behavior: "smooth" });
+  };
+
   return (
-    <div
-      id="projects"
-      className="py-16 xl:mx-16 lg:mx-6  md:py-24 bg-[--porcelain] "
-    >
-      <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12 text-center mb-16">
-        <h2 className="font-headline text-3xl md:text-4xl">Key Projects</h2>
-      </div>
-      <div className="space-y-8 md:space-y-16 md:w-full">
-        {projects.map(({ id, title, description, color }) => (
-          <section
-            key={id}
-            style={{ backgroundColor: `var(--${color})` }}
-            className="py-16 md:py-24"
+    <section id="projects" className="bg-[--porcelain] py-24 md:py-32">
+      <div className="mx-auto xl:max-w-7xl px-6 sm:px-8 lg:px-12">
+        <div className="text-center mb-16">
+          <h2 className="font-headline text-3xl md:text-4xl">Key Projects</h2>
+          <p className="mt-4 text-lg text-gray-600">
+            Distributed systems, caching solutions, and real-time applications.
+          </p>
+        </div>
+
+        <div className="relative">
+          {/* Carousel controls */}
+          <button
+            aria-label="Previous"
+            onClick={() => scrollByAmount("prev")}
+            className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 z-10 h-10 w-10 items-center justify-center rounded-full border border-black/10 bg-white/80 backdrop-blur hover:bg-white transition shadow-sm"
           >
-            <div className="mx-auto xl:max-w-7xl sm:w-full  md:w-full px-6 sm:px-8 lg:px-12 grid md:grid-cols-2 gap-12 items-center">
-              <div className="space-y-4 text-center md:text-left">
-                <h3 className="font-headline text-2xl md:text-3xl">{title}</h3>
-                <p className="text-lg text-gray-700 max-w-md mx-auto md:mx-0">
-                  {description}
-                </p>
-                <Link
-                  href={`/projects/${id}`}
-                  className="inline-block font-medium text-[--onyx] hover:text-[--soft-gold] transition-colors group"
+            <span className="sr-only">Previous</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              className="h-5 w-5"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M15 19l-7-7 7-7"
+              />
+            </svg>
+          </button>
+          <button
+            aria-label="Next"
+            onClick={() => scrollByAmount("next")}
+            className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 z-10 h-10 w-10 items-center justify-center rounded-full border border-black/10 bg-white/80 backdrop-blur hover:bg-white transition shadow-sm"
+          >
+            <span className="sr-only">Next</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              className="h-5 w-5"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M9 5l7 7-7 7"
+              />
+            </svg>
+          </button>
+
+          {/* Horizontal scroll area */}
+          <div
+            ref={scrollerRef}
+            className="flex gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-4 -mx-4 px-4 md:mx-0 md:px-0"
+          >
+            {projects.map(({ id, title, description }, index) => (
+              <Link
+                key={id}
+                href={`/projects/${id}`}
+                className="block group snap-center shrink-0 w-[85%] sm:w-[70%] md:w-[55%] lg:w-[40%]"
+              >
+                <div
+                  className="p-8 rounded-lg h-full transition-all duration-300 group-hover:shadow-xl group-hover:scale-[1.02] border border-transparent"
+                  style={{
+                    backgroundColor: cardColors[index % cardColors.length],
+                  }}
                 >
-                  View Case Study{" "}
-                  <span className="group-hover:translate-x-1 transition-transform inline-block">
-                    -&gt;
-                  </span>
-                </Link>
-              </div>
-              {/* You can add specific SVGs here based on the project id if you want */}
-            </div>
-          </section>
-        ))}
+                  <h3 className="font-headline text-2xl text-[--onyx]">
+                    {title}
+                  </h3>
+                  <p className="mt-2 text-gray-700">{description}</p>
+                  <div className="mt-4 font-medium text-[--onyx] opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    View Case Study{" "}
+                    <span className="group-hover:translate-x-1 transition-transform inline-block">
+                      -&gt;
+                    </span>
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
   );
 }

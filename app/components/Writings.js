@@ -84,7 +84,7 @@ export default function Writings({ writings }) {
             ref={scrollerRef}
             className="flex gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-4 -mx-4 px-4 md:mx-0 md:px-0"
           >
-            {writings.map(({ id, title, description }, index) => (
+            {writings.map(({ id, title, Description }, index) => (
               <Link
                 key={id}
                 href={`/writings/${id}`}
@@ -99,7 +99,7 @@ export default function Writings({ writings }) {
                   <h3 className="font-headline text-2xl text-[--onyx]">
                     {title}
                   </h3>
-                  <p className="mt-2 text-gray-700">{description}</p>
+                  <p className="mt-2 text-gray-700">{Description}</p>
                   <div className="mt-4 font-medium text-[--onyx] opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     Read Article{" "}
                     <span className="group-hover:translate-x-1 transition-transform inline-block">
