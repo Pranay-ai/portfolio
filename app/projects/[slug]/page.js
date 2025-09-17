@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { NotionAPI } from "notion-client";
-import NotionClient from "@/app/components/NotionClient";
+import NotionClient from "@/app/components/NotionCLient";
 import { getProjectData } from "@/app/lib/content";
 import "react-notion-x/src/styles.css";
 import "katex/dist/katex.min.css";
