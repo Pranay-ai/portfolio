@@ -5,7 +5,7 @@ export const projectDetails = [
     description:
       "A Python decorator providing Redis-backed distributed caching with automatic invalidation. When function code changes, the decorator detects modifications via source code hashing and automatically purges stale cache entries across all application instances. This eliminates manual cache management and prevents bugs from outdated cached data in distributed systems.",
     notion_link:
-      "https://e.notionhero.io/e1/p/e533f56-94e92428d30c37640d8dbf91c9b40f0",
+      "https://www.notion.so/Distributed-Cache-Decorator-266f4afd7b7a80d2b105f6159127f359?source=copy_link",
   },
   {
     id: "distributed-rate-limiter",
@@ -13,7 +13,7 @@ export const projectDetails = [
     description:
       "A horizontally scalable rate limiting service using Go, Redis, and Lua scripts. Implements the Token Bucket algorithm with atomic operations to prevent race conditions across distributed server instances. Features NGINX load balancing, Docker containerization, and stateless architecture that can scale by adding more server containers while maintaining consistent rate limit enforcement.",
     notion_link:
-      "https://e.notionhero.io/e1/p/2895eb9-2aee6425cf692e5b3a65fc2a3abd1f7",
+      "https://www.notion.so/Distributed-Rate-Limiter-266f4afd7b7a80a6b058cdb016a3cec7?source=copy_link",
   },
   {
     id: "realtime-clipboard-sync",
@@ -21,6 +21,6 @@ export const projectDetails = [
     description:
       "A distributed Go backend enabling instant clipboard synchronization across multiple devices. Uses WebSockets for real-time communication, Redis Pub/Sub for horizontal scaling, and JWT authentication for stateless sessions. The system supports thousands of concurrent connections while maintaining data consistency through PostgreSQL persistence and secure user management with bcrypt password hashing.",
     notion_link:
-      "https://e.notionhero.io/e1/p/7799e63-ebefc8587c7c9c47c93720e5b80af97",
+      "https://www.notion.so/Real-Time-Clipboard-Sync-266f4afd7b7a80b8bb05de586a094b30?source=copy_link",
   },
 ];
