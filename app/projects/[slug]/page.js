@@ -1,7 +1,35 @@
 import Link from "next/link";
 import { NotionRenderer } from "@/app/components/NotionRenderer";
 import { getProjectData } from "@/app/lib/content";
-import { notFound, redirect } from "next/navigation";
+import { Client } from "@notionhq/client";
+
+const notion = new Client({ auth: process.env.NOTION_API_KEY });
+
+// Direct fetch function
+async function fetchNotionPage(pageId) {
+  try {
+    const page = await notion.pages.retrieve({ page_id: pageId });
+
+    let allBlocks = [];
+    let cursor = undefined;
+
+    do {
+      const response = await notion.blocks.children.list({
+        block_id: pageId,
+        page_size: 100,
+        start_cursor: cursor,
+      });
+
+      allBlocks = allBlocks.concat(response.results);
+      cursor = response.has_more ? response.next_cursor : undefined;
+    } while (cursor);
+
+    return { page, blocks: allBlocks };
+  } catch (error) {
+    console.error("Error fetching Notion data:", error);
+    throw error;
+  }
+}
 
 // Helper to extract Notion page ID
 function extractPageId(notionLink) {
@@ -69,46 +97,14 @@ export default async function Writing({ params }) {
     return <ErrorPage message="Invalid Notion page configuration" />;
   }
 
-  // Fetch from your API route - try different base URL approaches
-  let apiUrl;
-  if (process.env.NEXT_PUBLIC_BASE_URL) {
-    apiUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/api/notion/${pageId}`;
-  } else if (process.env.VERCEL_URL) {
-    apiUrl = `https://${process.env.VERCEL_URL}/api/notion/${pageId}`;
-  } else {
-    // For local development or when deployed, use relative URL
-    apiUrl = `/api/notion/${pageId}`;
-  }
-
-  let response;
-  try {
-    console.log("Fetching from:", apiUrl);
-    response = await fetch(apiUrl, {
-      next: { revalidate: 300 },
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-  } catch (fetchError) {
-    console.error("Fetch error:", fetchError);
-    return <ErrorPage message="Failed to load content" />;
-  }
-
-  if (!response.ok) {
-    console.error(`API responded with status: ${response.status}`);
-    console.error(
-      "Response:",
-      await response.text().catch(() => "Could not read response")
-    );
-    return <ErrorPage message="Content temporarily unavailable" />;
-  }
-
+  // Fetch directly from Notion instead of through API route
   let data;
   try {
-    data = await response.json();
-  } catch (parseError) {
-    console.error("JSON parse error:", parseError);
-    return <ErrorPage message="Invalid content format" />;
+    console.log("Fetching Notion page:", pageId);
+    data = await fetchNotionPage(pageId);
+  } catch (error) {
+    console.error("Failed to fetch Notion content:", error);
+    return <ErrorPage message="Failed to load content from Notion" />;
   }
 
   const { page, blocks } = data;
