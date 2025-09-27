@@ -66,4 +66,12 @@ export const writingDetails = [
     notion_link:
       "https://www.notion.so/SSTables-and-LSM-Trees-The-Secret-Sauce-Behind-Modern-Database-Performance-265f4afd7b7a807887fada997decf01f?source=copy_link",
   },
+  {
+    id: "postgresql-indexes-shared-buffers-and-performance-optimization",
+    title: "PostgreSQL Indexes, Shared Buffers, and Performance Optimization",
+    Description:
+      "Deep dive into PostgreSQL covering indexes, shared buffers, and memory optimization. Learn why column order matters, how to size shared buffers properly, tackle large dataset challenges through partitioning, and understand MVCC's impact on query performance.",
+    notion_link:
+      "https://www.notion.so/PostgreSQL-Indexes-Shared-Buffers-and-Performance-Optimization-27bf4afd7b7a8029b3dacb194c3064e0?source=copy_link",
+  },
 ];
