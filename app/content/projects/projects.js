@@ -1,5 +1,13 @@
 export const projectDetails = [
   {
+    id: "product-catalog-voice-agent",
+    title: "Product Catalog Voice Agent",
+    description:
+      "A distributed conversational AI voice agent specifically designed to answer user questions based on a product's user manual. It uses a multi-stage LLM pipeline that leverages **Retrieval-Augmented Generation (RAG)** against a **Neo4j** graph database to find and inject grounded information from the manual, ensuring factual and accurate responses. The system orchestrates a **React.js** frontend, a **Node.js** audio gateway with **Whisper.cpp** for ASR, and a **FastAPI** backend, all communicating via **WebSockets** and **Server-Sent Events (SSE)** for a low-latency, real-time user experience.",
+    notion_link:
+      "https://www.notion.so/PRODUCT-CATALOG-VOICE-AGENT-275f4afd7b7a806b9950c0c346d52116?source=copy_link",
+  },
+  {
     id: "distributed-cache-decorator",
     title: "Distributed Cache Decorator",
     description:

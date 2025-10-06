@@ -6,7 +6,7 @@ const experienceData = [
     company: "Innerjoy Ed",
     role: "Full Stack Developer",
     date: "May 2024 – Present",
-    desc: "Architected secure NestJS APIs and built an AI-powered curriculum tool with LangChain, optimizing API performance by 50%.",
+    desc: "Architected secure NestJS APIs and built an AI-powered curriculum tool with LangChain, optimizing API performance by 50%.Build AI Voice Agents For User Interactivty",
   },
   {
     company: "One Community Inc.",
