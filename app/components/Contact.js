@@ -48,7 +48,7 @@ export default function Contact() {
         </div>
 
         <p className="mt-8 text-xl md:text-2xl text-[--graphite] font-light max-w-lg mx-auto leading-relaxed">
-          Open to opportunities in AI/ML engineering, backend architecture, and distributed systems. Let's build something remarkable.
+          Open to opportunities in AI/ML engineering, backend architecture, and distributed systems. Let&apos;s build something remarkable.
         </p>
 
         {/* Contact links */}
