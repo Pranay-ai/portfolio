@@ -3,37 +3,45 @@ import { useRef, useEffect, useState } from "react";
 
 const experienceData = [
   {
+    company: "BuzzWisely",
+    role: "Software Engineer",
+    date: "Oct 2025 – Present",
+    desc: "Building an AI-powered voice agent platform serving as an intelligent phone receptionist for businesses. Architected real-time conversational AI pipelines using Pipecat framework with Daily.co telephony, achieving sub-500ms response latencies. Implemented warm transfer functionality with LLM-powered context briefing and integrated Telnyx/Twilio with WebRTC streaming.",
+    highlight: "Sub-500ms Latency",
+  },
+  {
     company: "Innerjoy Ed",
     role: "Full Stack Developer",
-    date: "May 2024 – Present",
-    desc: "Architected secure NestJS APIs and built an AI-powered curriculum tool with LangChain, optimizing API performance by 50%.Build AI Voice Agents For User Interactivty",
+    date: "May 2024 – Sep 2025",
+    desc: "Engineered secure authentication and content management APIs serving 1,000+ DAU with NestJS, PostgreSQL, MongoDB. Leveraged LangChain agent modules with OpenAI APIs for adaptive learning assistants, improving content relevance by 45%. Optimized performance with Redis caching, reducing API latency by 35%.",
+    highlight: "45% Relevance Boost",
   },
   {
     company: "One Community Inc.",
-    role: "Volunteer Software Engineer",
+    role: "Software Engineer (Volunteer)",
     date: "Apr 2024 – Jul 2024",
-    desc: "Developed RESTful APIs for a global volunteer network, improving server responsiveness by 40%.",
+    desc: "Architected RESTful microservices with Express.js for a volunteer platform supporting 100+ users with RBAC (Role-Based Access Control). Implemented CI/CD pipelines and achieved 90% code coverage through comprehensive Jest unit and integration testing.",
+    highlight: "90% Code Coverage",
   },
   {
     company: "CSU, Fullerton",
     role: "Teaching Associate",
     date: "Aug 2023 – Jun 2024",
-    desc: "Taught Data Structures in C++ to over 70 students, redesigning the curriculum to raise average exam scores from 74% to 85%.",
+    desc: "Instructed Data Structures and Algorithms in C++ to 70+ students, covering Big-O complexity, graph traversals, dynamic programming, and system design fundamentals. Redesigned curriculum, improving scores from 74% to 85%.",
+    highlight: "74% → 85% Scores",
+  },
+  {
+    company: "Tata Consultancy Services",
+    role: "Software Engineer Intern",
+    date: "Mar 2022 – Jun 2022",
+    desc: "Developed Python ETL automation tool for parsing AUTOSAR XML schemas, implementing parallel processing pipelines that reduced processing time from 2 hours to 10 minutes — a 92% efficiency gain.",
+    highlight: "92% Time Reduction",
   },
 ];
 
 export default function Experience() {
   const sectionRef = useRef(null);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isSafari, setIsSafari] = useState(false);
-
-  useEffect(() => {
-    // Check if browser is Safari
-    const userAgent = navigator.userAgent.toLowerCase();
-    const isSafariBrowser =
-      userAgent.includes("safari/") && !userAgent.includes("chrome/");
-    setIsSafari(isSafariBrowser);
-  }, []);
 
   useEffect(() => {
     const el = sectionRef.current;
@@ -53,14 +61,10 @@ export default function Experience() {
       const sectionHeight = el.offsetHeight;
       const viewportHeight = window.innerHeight;
 
-      // More reliable check for when section is in scroll area
       if (rect.top <= 0 && rect.bottom >= 0) {
-        // Calculate progress with better Safari handling
         const scrolled = Math.abs(rect.top);
         const maxScroll = Math.max(1, sectionHeight - viewportHeight);
         const progress = Math.min(1, Math.max(0, scrolled / maxScroll));
-
-        // Calculate index with more precise handling
         const rawIndex = progress * (experienceData.length - 1);
         const idx = Math.round(rawIndex);
 
@@ -79,20 +83,15 @@ export default function Experience() {
       }
     };
 
-    // Safari-compatible IntersectionObserver initialization
     try {
       observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
             isIntersecting = entry.isIntersecting;
-
             if (isIntersecting) {
-              // Add scroll listener when in view
               window.addEventListener("scroll", onScroll, { passive: true });
-              // Initial calculation when entering view
               setTimeout(handleScroll, 10);
             } else {
-              // Remove scroll listener when out of view
               window.removeEventListener("scroll", onScroll);
             }
           });
@@ -102,16 +101,13 @@ export default function Experience() {
           rootMargin: "50px 0px",
         }
       );
-
       observer.observe(el);
     } catch (e) {
       console.error("IntersectionObserver not supported:", e);
-      // Fallback for browsers without IntersectionObserver
       window.addEventListener("scroll", onScroll, { passive: true });
       setTimeout(handleScroll, 100);
     }
 
-    // Initial check in case already in view
     setTimeout(handleScroll, 100);
 
     return () => {
@@ -126,10 +122,9 @@ export default function Experience() {
     <section
       id="experience"
       ref={sectionRef}
-      className="bg-[--porcelain] relative"
+      className="bg-gradient-to-b from-[--sage-pale] via-[--cream] to-[--ivory] relative"
       style={{
-        minHeight: "400vh",
-        // Ensure consistent behavior across browsers
+        minHeight: "625vh",
         WebkitTransform: "translateZ(0)",
         transform: "translateZ(0)",
       }}
@@ -138,56 +133,94 @@ export default function Experience() {
         className="sticky top-0 flex flex-col items-center justify-center"
         style={{
           height: "100vh",
-          // Safari-specific fixes
           WebkitTransform: "translateZ(0)",
           transform: "translateZ(0)",
-          // Add perspective for Safari hardware acceleration
           WebkitPerspective: "1000",
           perspective: "1000",
-          // Prevent flickering in Safari
           WebkitBackfaceVisibility: "hidden",
           backfaceVisibility: "hidden",
         }}
       >
-        <div className="relative w-full max-w-3xl px-6 h-full">
+        {/* Section title */}
+        <div className="absolute top-24 left-1/2 -translate-x-1/2">
+          <p className="font-sans-elegant text-sm tracking-[0.3em] uppercase text-[--taupe]">
+            Professional Journey
+          </p>
+        </div>
+
+        <div className="relative w-full max-w-4xl px-6 h-full">
           {experienceData.map((exp, i) => (
             <div
               key={i}
-              className={`absolute inset-0 flex flex-col items-center justify-center text-center transition-opacity duration-500 ${
-                i === currentIndex ? "opacity-100" : "opacity-0"
+              className={`absolute inset-0 flex flex-col items-center justify-center text-center transition-all duration-700 ${
+                i === currentIndex ? "opacity-100 scale-100" : "opacity-0 scale-95"
               }`}
               style={{
-                // Ensure smooth transitions in Safari
                 WebkitTransform: "translateZ(0)",
                 transform: "translateZ(0)",
-                // Add will-change for better performance
-                willChange: "opacity",
-                // Prevent flickering
+                willChange: "opacity, transform",
                 WebkitBackfaceVisibility: "hidden",
                 backfaceVisibility: "hidden",
               }}
             >
-              <p className="text-lg font-medium text-gray-500">{exp.date}</p>
-              <h2 className="font-headline text-3xl md:text-5xl mt-2">
+              {/* Date badge */}
+              <span className="font-sans-elegant text-sm tracking-[0.2em] uppercase text-[--taupe] bg-[--sage-pale]/50 px-5 py-2 rounded-full border border-[--sage-muted]/30">
+                {exp.date}
+              </span>
+
+              {/* Company name */}
+              <h2 className="font-headline text-5xl md:text-7xl lg:text-8xl mt-6 text-[--charcoal] tracking-wide">
                 {exp.company}
               </h2>
-              <h3 className="text-xl md:text-2xl text-gray-700 mt-4">
+
+              {/* Role */}
+              <h3 className="font-sans-elegant text-base md:text-lg tracking-[0.15em] uppercase text-[--sage] mt-4">
                 {exp.role}
               </h3>
-              <p className="mt-6 text-lg text-gray-600 max-w-2xl">{exp.desc}</p>
+
+              {/* Elegant divider */}
+              <div className="mt-8 flex items-center gap-3">
+                <span className="w-12 h-px bg-[--sage-muted]" />
+                <span className="w-1.5 h-1.5 rounded-full bg-[--sage]" />
+                <span className="w-12 h-px bg-[--sage-muted]" />
+              </div>
+
+              {/* Description */}
+              <p className="mt-8 text-xl md:text-2xl text-[--graphite] leading-relaxed max-w-2xl font-light">
+                {exp.desc}
+              </p>
+
+              {/* Highlight badge */}
+              <div className="mt-8 inline-flex items-center gap-2 bg-gradient-to-r from-[--sage-light]/30 to-[--champagne-light]/30 px-6 py-3 border border-[--sage]/20">
+                <span className="w-2 h-2 rounded-full bg-[--gold-accent]" />
+                <span className="font-sans-elegant text-sm tracking-[0.1em] uppercase text-[--charcoal]">
+                  {exp.highlight}
+                </span>
+              </div>
             </div>
           ))}
         </div>
 
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
-          <div className="flex space-x-2">
+        {/* Progress indicators */}
+        <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2">
+          <div className="flex items-center gap-4">
             {experienceData.map((_, i) => (
-              <div
-                key={i}
-                className={`w-2 h-2 rounded-full transition-colors duration-300 ${
-                  i === currentIndex ? "bg-gray-800" : "bg-gray-300"
-                }`}
-              />
+              <div key={i} className="flex flex-col items-center gap-2">
+                <div
+                  className={`w-10 h-px transition-all duration-500 ${
+                    i === currentIndex
+                      ? "bg-[--sage] scale-x-100"
+                      : "bg-[--sage-muted] scale-x-50"
+                  }`}
+                />
+                <span
+                  className={`font-sans-elegant text-[10px] tracking-widest transition-colors duration-300 ${
+                    i === currentIndex ? "text-[--charcoal]" : "text-[--taupe]"
+                  }`}
+                >
+                  0{i + 1}
+                </span>
+              </div>
             ))}
           </div>
         </div>

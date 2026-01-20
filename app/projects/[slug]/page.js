@@ -52,20 +52,18 @@ function extractPageId(notionLink) {
 // Error component
 function ErrorPage({ message }) {
   return (
-    <div className="bg-[--porcelain] min-h-screen">
-      <div className="mx-auto max-w-4xl py-24 px-6">
+    <div className="bg-gradient-to-b from-[--cream] to-[--ivory] min-h-screen">
+      <div className="mx-auto max-w-4xl py-32 px-6">
         <Link
-          href="/#writing"
-          className="font-medium text-[--onyx] hover:text-[--soft-gold] transition-colors group mb-12 inline-block"
+          href="/#projects"
+          className="group inline-flex items-center gap-3 font-sans-elegant text-xs tracking-[0.15em] uppercase text-[--taupe] hover:text-[--charcoal] transition-colors duration-300 mb-16"
         >
-          <span className="group-hover:-translate-x-1 transition-transform inline-block">
-            &lt;-
-          </span>{" "}
+          <span className="w-8 h-px bg-[--sage-muted] group-hover:w-12 group-hover:bg-[--sage] transition-all duration-300" />
           Back to Portfolio
         </Link>
-        <div className="text-center py-12">
-          <h1 className="text-2xl mb-4">Content Not Available</h1>
-          <p className="text-gray-600">{message}</p>
+        <div className="text-center py-16">
+          <h1 className="font-headline text-3xl text-[--charcoal] mb-6">Content Not Available</h1>
+          <p className="text-[--graphite] font-light">{message}</p>
         </div>
       </div>
     </div>
@@ -110,20 +108,32 @@ export default async function Writing({ params }) {
   const { page, blocks } = data;
 
   return (
-    <div className="bg-[--porcelain] min-h-screen">
-      <div className="mx-auto max-w-4xl py-24 px-6">
+    <div className="bg-gradient-to-b from-[--cream] via-[--ivory] to-[--sage-pale]/30 min-h-screen">
+      <div className="mx-auto max-w-4xl py-32 px-6">
+        {/* Back link */}
         <Link
-          href="/#writing"
-          className="font-medium text-[--onyx] hover:text-[--soft-gold] transition-colors group mb-12 inline-block"
+          href="/#projects"
+          className="group inline-flex items-center gap-3 font-sans-elegant text-xs tracking-[0.15em] uppercase text-[--taupe] hover:text-[--charcoal] transition-colors duration-300 mb-16"
         >
-          <span className="group-hover:-translate-x-1 transition-transform inline-block">
-            &lt;-
-          </span>{" "}
-          Back to Portfolio
+          <span className="w-8 h-px bg-[--sage-muted] group-hover:w-12 group-hover:bg-[--sage] transition-all duration-300" />
+          Back to Projects
         </Link>
 
-        <h1 className="text-3xl mb-3.5">{title}</h1>
-        <NotionRenderer page={page} blocks={blocks} />
+        {/* Article header */}
+        <header className="mb-12">
+          <p className="font-sans-elegant text-xs tracking-[0.3em] uppercase text-[--taupe] mb-4">
+            Case Study
+          </p>
+          <h1 className="font-headline text-4xl md:text-5xl lg:text-6xl text-[--charcoal] tracking-wide leading-tight">
+            {title}
+          </h1>
+          <div className="mt-8 w-24 h-px bg-gradient-to-r from-[--sage] to-[--sage-light]" />
+        </header>
+
+        {/* Content */}
+        <article className="prose-luxury">
+          <NotionRenderer page={page} blocks={blocks} />
+        </article>
       </div>
     </div>
   );

@@ -1,25 +1,343 @@
 @import "tailwindcss";
 
 :root {
-  --porcelain: #f7f4ee;
-  --mist-blue: #dde9f4;
-  --dusty-rose: #ebd5d7;
-  --sage-mist: #dce6e1;
-  --onyx: #0a0a0a;
-  --soft-gold: #d9cba3;
+  /* Luxury Sage & Pastel Palette */
+  --cream: #faf9f6;
+  --ivory: #f8f5f0;
+  --sage: #a8b5a0;
+  --sage-light: #c5d1be;
+  --sage-muted: #d4ddd0;
+  --sage-pale: #e8ede5;
+  --blush: #e8d5d0;
+  --blush-light: #f3e8e4;
+  --lavender: #d8d4e8;
+  --lavender-light: #eae8f2;
+  --champagne: #e8dcc8;
+  --champagne-light: #f2ebe0;
+  --charcoal: #2c2c2c;
+  --graphite: #4a4a4a;
+  --taupe: #8b8178;
+  --gold-accent: #c4a962;
+  --gold-soft: #d4c08a;
+
+  /* Legacy mappings for compatibility */
+  --porcelain: var(--cream);
+  --mist-blue: var(--lavender-light);
+  --dusty-rose: var(--blush);
+  --sage-mist: var(--sage-pale);
+  --onyx: var(--charcoal);
+  --soft-gold: var(--gold-accent);
 }
 
 body {
-  background-color: var(--porcelain);
-  color: var(--onyx);
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, sans-serif;
+  background-color: var(--cream);
+  color: var(--charcoal);
+  font-family: "Cormorant Garamond", "Georgia", "Times New Roman", serif;
+  font-size: 1.125rem;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  line-height: 1.8;
 }
 
+/* Elegant serif headlines */
 .font-headline {
+  font-family: "Cormorant Garamond", "Georgia", serif;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+/* Sans-serif for UI elements */
+.font-sans-elegant {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  font-size: 0.95rem;
+}
+
+/* Luxury button styles */
+.btn-luxury {
+  background: linear-gradient(135deg, var(--sage) 0%, var(--sage-light) 100%);
+  color: var(--charcoal);
+  padding: 1rem 2.5rem;
+  border-radius: 0;
   font-family: "Inter", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid var(--sage);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-luxury::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--gold-soft) 0%, var(--champagne) 100%);
+  transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: -1;
+}
+
+.btn-luxury:hover::before {
+  left: 0;
+}
+
+.btn-luxury:hover {
+  border-color: var(--gold-accent);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(168, 181, 160, 0.3);
+}
+
+/* Luxury card styles */
+.card-luxury {
+  background: linear-gradient(180deg, rgba(255,255,255,0.9) 0%, rgba(250,249,246,0.95) 100%);
+  border: 1px solid rgba(168, 181, 160, 0.2);
+  border-radius: 2px;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.card-luxury::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 2px;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(168, 181, 160, 0.3), rgba(196, 169, 98, 0.1));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.card-luxury:hover::before {
+  opacity: 1;
+}
+
+.card-luxury:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 60px rgba(44, 44, 44, 0.08), 0 8px 25px rgba(168, 181, 160, 0.12);
+}
+
+/* Elegant divider */
+.divider-elegant {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--sage-muted), transparent);
+}
+
+/* Gold accent underline */
+.underline-gold {
+  position: relative;
+  display: inline-block;
+}
+
+.underline-gold::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, var(--gold-accent), var(--gold-soft));
+}
+
+/* Smooth scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--ivory);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--sage-muted);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--sage);
+}
+
+/* Selection styling */
+::selection {
+  background: var(--sage-light);
+  color: var(--charcoal);
+}
+
+/* Blink animation for cursor */
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.animate-blink {
+  animation: blink 1s infinite;
+}
+
+/* Fade in animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+/* Stagger animation delay utilities */
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+.delay-500 { animation-delay: 0.5s; }
+
+/* Luxury prose styling for article content */
+.prose-luxury {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  color: var(--graphite);
+}
+
+.prose-luxury h1,
+.prose-luxury h2,
+.prose-luxury h3,
+.prose-luxury h4 {
+  font-family: "Cormorant Garamond", "Georgia", serif;
+  color: var(--charcoal);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.prose-luxury h1 { font-size: 2.5rem; }
+.prose-luxury h2 { font-size: 2rem; }
+.prose-luxury h3 { font-size: 1.5rem; }
+.prose-luxury h4 { font-size: 1.25rem; }
+
+.prose-luxury p {
+  margin-bottom: 1.5rem;
+}
+
+.prose-luxury a {
+  color: var(--sage);
+  text-decoration: none;
+  border-bottom: 1px solid var(--sage-muted);
+  transition: all 0.3s ease;
+}
+
+.prose-luxury a:hover {
+  color: var(--charcoal);
+  border-bottom-color: var(--gold-accent);
+}
+
+.prose-luxury ul,
+.prose-luxury ol {
+  margin: 1.5rem 0;
+  padding-left: 1.5rem;
+}
+
+.prose-luxury li {
+  margin-bottom: 0.75rem;
+  position: relative;
+}
+
+.prose-luxury ul li::marker {
+  color: var(--sage);
+}
+
+.prose-luxury ol li::marker {
+  color: var(--sage);
+  font-weight: 500;
+}
+
+.prose-luxury blockquote {
+  border-left: 3px solid var(--sage);
+  padding-left: 1.5rem;
+  margin: 2rem 0;
+  font-style: italic;
+  color: var(--taupe);
+}
+
+.prose-luxury code {
+  font-family: "JetBrains Mono", "Fira Code", monospace;
+  font-size: 0.9em;
+  background: var(--sage-pale);
+  padding: 0.2em 0.4em;
+  border-radius: 2px;
+  color: var(--charcoal);
+}
+
+.prose-luxury pre {
+  background: var(--charcoal);
+  color: var(--cream);
+  padding: 1.5rem;
+  overflow-x: auto;
+  margin: 2rem 0;
+  border: 1px solid var(--sage-muted);
+}
+
+.prose-luxury pre code {
+  background: transparent;
+  padding: 0;
+  color: inherit;
+}
+
+.prose-luxury img {
+  margin: 2rem 0;
+  border: 1px solid var(--sage-muted);
+}
+
+.prose-luxury hr {
+  border: none;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--sage-muted), transparent);
+  margin: 3rem 0;
+}
+
+.prose-luxury table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2rem 0;
+}
+
+.prose-luxury th,
+.prose-luxury td {
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--sage-muted);
+  text-align: left;
+}
+
+.prose-luxury th {
+  background: var(--sage-pale);
+  font-family: "Inter", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--charcoal);
+}
+
+.prose-luxury strong {
+  color: var(--charcoal);
   font-weight: 600;
-  letter-spacing: -0.02em;
+}
+
+.prose-luxury em {
+  color: var(--taupe);
 }
